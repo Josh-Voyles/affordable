@@ -47,7 +47,15 @@ git commit -m "See: #<issue_number> <your_commit_message>"
 Now let's push your branch to Github
 
 ```bash
-git push origin feature_or-bugfix-name
+git push origin feature-or-bugfix-name
 ```
 
 Head to the Github project, and open new pull request to develop branch
+
+After the project has been merged, make sure you delete your local repository that you pushed.
+
+```bash
+git checkout develop  # switch to develop branch first
+
+git branch -d feature-or-bugfix-name
+```
