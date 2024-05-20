@@ -57,5 +57,5 @@ After the project has been merged, make sure you delete your local repository th
 ```bash
 git checkout develop  # switch to develop branch first
 
-git branch -d feature-or-bugfix-name
+git branch -D feature-or-bugfix-name
 ```
