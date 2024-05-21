@@ -4,7 +4,7 @@
 Many home buyers use a calculator to determine their monthly house payment, but they are often surprised by additional, unexpected payments that come with home ownership. This project aims to create a comprehensive mortgage calculator application that will benefit potential home buyers and realtors by helping them determine the price of a house that is realistically within their budget.
 
 ## **Installation & Contributing**
-1. Reference CONTRIBUTE.md for instructions. 
+1. Reference [CONTRIBUTING.md](https://github.com/Josh-Voyles/Home-Choice-Pro/blob/readme/CONTRIBUTING.md) for instructions. 
 
 ### **Key Features**
 -  Monthly Budget Calculation: Determine the maximum house price based on the user's monthly budget.
