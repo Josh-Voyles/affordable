@@ -53,7 +53,7 @@ Home-Choice-Pro/
 - [Randy Shreeves](https://github.com/randy-shreeves)
 - [Josh Voyles](https://github.com/Josh-Voyles)
 - [Joey Garcia](https://github.com/YouKnowJoey)
-- Zaria Gibbs
+- [Zaria Gibbs](https://github.com/princesszz)
 
 ## LICENSE
 This project is licensed under the GPL-3.0 license - see the LICENSE file for details.
