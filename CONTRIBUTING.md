@@ -10,6 +10,20 @@ git clone https://github.com/Josh-Voyles/Home-Choice-Pro
 cd Home-Choice-Pro
 ```
 
+Set up your virtual environment
+
+```bash
+python3 -m venv venv  # macOs/Linux install virtual environment
+
+cd venv
+
+source bin/activate
+
+cd ..
+
+pip install -r requirements.txt
+```
+
 Before creating a new branch, ALWAYS ensure latest development branch
 
 ```bash
