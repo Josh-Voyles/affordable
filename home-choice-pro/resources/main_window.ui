@@ -132,6 +132,9 @@ QPushButton:hover {
        </item>
        <item>
         <widget class="QPushButton" name="chartButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Chart</string>
          </property>
@@ -145,6 +148,9 @@ QPushButton:hover {
        </item>
        <item>
         <widget class="QPushButton" name="settingButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Settings</string>
          </property>
@@ -158,6 +164,9 @@ QPushButton:hover {
        </item>
        <item>
         <widget class="QPushButton" name="helpButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Help</string>
          </property>
@@ -193,6 +202,19 @@ QPushButton:hover {
         <bool>true</bool>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="sidePanelVertSpacer3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </widget>
@@ -470,7 +492,7 @@ QPushButton:hover {
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-141</y>
+          <y>0</y>
           <width>625</width>
           <height>600</height>
          </rect>
@@ -1116,6 +1138,9 @@ QPushButton:hover {
             </item>
             <item>
              <widget class="QLineEdit" name="propertyTaxEdit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1238,6 +1263,9 @@ QPushButton:hover {
             </item>
             <item>
              <widget class="QLineEdit" name="PMIEdit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1360,6 +1388,9 @@ QPushButton:hover {
             </item>
             <item>
              <widget class="QLineEdit" name="insuranceEdit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1482,6 +1513,9 @@ QPushButton:hover {
             </item>
             <item>
              <widget class="QLineEdit" name="HOAEdit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1725,8 +1759,8 @@ border-radius: 6px;
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>589</y>
+     <x>87</x>
+     <y>576</y>
     </hint>
     <hint type="destinationlabel">
      <x>40</x>
