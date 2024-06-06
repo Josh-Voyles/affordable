@@ -84,7 +84,7 @@ QPushButton:hover {
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="resources.qrc">:/images/Gemini_Generated_Image_njly4xnjly4xnjly.jpeg</pixmap>
+          <pixmap>:/images/Gemini_Generated_Image_njly4xnjly4xnjly.jpeg</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -492,7 +492,7 @@ QPushButton:hover {
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>-151</y>
           <width>625</width>
           <height>600</height>
          </rect>
@@ -1681,6 +1681,9 @@ border-radius: 6px;
                 <width>100</width>
                 <height>16777215</height>
                </size>
+              </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
               </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {

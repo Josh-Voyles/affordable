@@ -22,31 +22,76 @@
      <height>131</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout"/>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>27</y>
-     <width>291</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Error: Only numbers allowed</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
+   <layout class="QGridLayout" name="errorGridLayout">
+    <item row="1" column="1">
+     <widget class="QPushButton" name="errorCloseButton">
+      <property name="text">
+       <string>Close</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <spacer name="errorSpacerH1">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="errorLabel">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Error: Only numbers allowed</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <spacer name="errorSpacerH2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>errorCloseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>194</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>192</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
