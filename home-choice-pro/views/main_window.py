@@ -1,4 +1,18 @@
+"""
+Home Choice Pro Morgtage Calculator
 
+This application calculates 'how much house you can afford' based on monthly payment.
+
+UMGC CMSC 495 6380
+Class Project
+Joey Garcia
+Josh Voyles
+Randy Shreeves
+Zaria Gibbs
+
+Calls MainWindow from auto-generated QT Designer Files
+
+"""
 from PyQt5.QtWidgets import QMainWindow
 from views.main_window_ui import Ui_MainWindow
 from views.pop_up_error_window import ErrorWindow
@@ -19,6 +33,7 @@ class MainWindow(QMainWindow):
                 ]
 
         self.ui.calcPushButton.clicked.connect(self.calculate_house)
+        self.ui.resetPushButton.clicked.connect(self.reset)
 
     def calculate_house(self):
         if self.verify_digits():
@@ -26,6 +41,12 @@ class MainWindow(QMainWindow):
             pass
         else:
             self.display_error()
+
+    def reset(self):
+        for edit in self.editBoxes:
+            edit.setText('0')
+        self.ui.radioButtonDollar.setChecked(True)
+        self.ui.termComboBox.setCurrentIndex(0)
 
 
     def verify_digits(self):
@@ -37,4 +58,5 @@ class MainWindow(QMainWindow):
     def display_error(self):
         self.error = ErrorWindow()
         self.error.show()
+
         
