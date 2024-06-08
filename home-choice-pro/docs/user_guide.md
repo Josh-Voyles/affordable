@@ -13,7 +13,6 @@
     - [Input Guidelines](#input-guidelines)
     - [Features](#features)
     - [Troubleshooting](#troubleshooting)
-    - [Support](#support)
     - [Contributing](#contributing)
     - [License](#license)
     - [Acknowledgements](#acknowledgements)
@@ -63,7 +62,6 @@ To configure **Home Choice Pro**, follow these steps:
 ### Input Guidelines
 To ensure smooth operation of **Home Choice Pro**, please adhere to the following input guidelines:
 **Allowed Inputs**
-- **Text Fields:** Only alphanumeric characters (A-Z, a-z, 0-9) and basic punctuation (.,!,?, etc.) are allowed.
 - **Numeric Fields:** Only numeric values (0-9) are allowed. Decimal points may be used where applicable.
 
 ### Features
@@ -81,10 +79,6 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 - **Issue 3:** The application crashes unexpectedly.
   - **Solution:** Make sure your system has enough resources (RAM, disk space). Check the application logs located at '[path/to/logs]' for more information on the error. If the issue continues, contact support.
 
-### Support
-For assistance, please reach out to our support team:
-- **Email:**
-- **Support Hours:** Monday to Friday, 9 AM to 5 PM (ET)
 
 ### Contributing
 
