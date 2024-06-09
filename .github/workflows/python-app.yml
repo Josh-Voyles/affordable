@@ -28,7 +28,8 @@ jobs:
 
     - name: Install dependencies (Linux and macOS)
       run: |
-        sudo apt-get update && sudo apt-get install -y python3-opencv
+        sudo apt-get update && sudo apt-get autoclean
+        sudo apt-get install -y '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
         python3 -m pip install --upgrade pip
         pip install flake8 
         pip install -r requirements.txt
