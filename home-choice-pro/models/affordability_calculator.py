@@ -4,59 +4,25 @@ import math
 class AffordabilityCalculator:
 
     # Class Variables
-    monthly_payment: float = -1.0
-    down_payment: float = -1.0
-    interest_rate: float = -1.0
-    loan_term: float = -1.0
-    home_affordability_price: int = -1
+    monthly_payment: float
+    down_payment: float
+    interest_rate: float
+    loan_term: float
+    home_affordability_price: int
 
-    # Getters
-    def get_monthly_payment(self) -> float:
-        return self.monthly_payment
-
-    def get_down_payment(self) -> float:
-        return self.down_payment
-
-    def get_interest_rate(self) -> float:
-        return self.interest_rate
-
-    def get_loan_term(self) -> float:
-        return self.loan_term
-
-    def get_home_affordability_price(self) -> int:
-        return self.home_affordability_price
-
-    # Setters
-    def set_monthly_payment(self, monthly_payment):
+    # Constructor
+    def __init__(self, monthly_payment, down_payment, interest_rate, loan_term):
+        """Initializes class variables."""
         self.monthly_payment = monthly_payment
-
-    def set_down_payment(self, down_payment):
         self.down_payment = down_payment
-
-    def set_interest_rate(self, interest_rate):
         self.interest_rate = interest_rate
-
-    def set_loan_term(self, loan_term):
         self.loan_term = loan_term
-
-    def set_home_affordability_price(self, home_affordability_price):
-        self.home_affordability_price = home_affordability_price
-
-    def reset_class_variables(self):
-        """
-        Use this function to reset the class variables before repeated use of calculator.
-        """
-        self.set_monthly_payment(-1.0)
-        self.set_down_payment(-1.0)
-        self.set_interest_rate(-1.0)
-        self.set_loan_term(-1.0)
-        self.set_home_affordability_price(-1)
+        # Default value for uninitialized home affordability price
+        self.home_affordability_price = -1
 
     # Variable Checking Functions
     def _user_inputs_are_valid(self) -> bool:
-        """
-        Use this function to verify user inputted class variables are valid.
-        """
+        """Verifies user inputted class variables are valid."""
         class_variables = [
             self.monthly_payment,
             self.down_payment,
@@ -68,18 +34,14 @@ class AffordabilityCalculator:
         return True
 
     def _home_affordability_price_is_valid(self) -> bool:
-        """
-        Ue this function to verify the home affordability price is valid.
-        """
+        """Verifies the home affordability price is valid."""
         if self.home_affordability_price == -1:
             return False
         return True
 
     @staticmethod
     def convert_string_number_into_float(number) -> float:
-        """
-        Use this function to convert a string representing a number into a float (if possible).
-        """
+        """Converts a string representing a number into a float (if possible)."""
         if not number.isdigit():
             return -1.0
         if not float(number) >= 0:
@@ -88,25 +50,20 @@ class AffordabilityCalculator:
 
     # Calculation Functions
     def calculate_home_affordability_price(self) -> str:
-        """
-        Use this function to calculate the maximum home price that a user can afford based on the
-        provided financial variables.
-        """
+        """Calculates the maximum home price that a user can afford."""
         if self._user_inputs_are_valid() is False:
             return "Invalid User Inputs"
         numerator = self._calculate_numerator()
         denominator = self._calculate_denominator()
         loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
         home_affordability_price = loan_affordability_price + self.down_payment
-        self.set_home_affordability_price(round(home_affordability_price))
+        self.home_affordability_price = round(home_affordability_price)
         if self._home_affordability_price_is_valid() is False:
             return "Invalid Calculation From calculate_home_affordability_price() Function"
         return str(round(home_affordability_price))
 
     def calculate_total_home_loan_price(self) -> str:
-        """
-        Use this function to calculate the total cost of a home loan over the loan term.
-        """
+        """Calculates the total cost of a home loan over the loan term."""
         if self._user_inputs_are_valid() is False:
             return "Invalid User Inputs"
         if self._home_affordability_price_is_valid() is False:
@@ -118,9 +75,7 @@ class AffordabilityCalculator:
         return str(round(total_home_loan_price))
 
     def calculate_loan_principal(self) -> str:
-        """
-        Use this function to calculate the loan's principal.
-        """
+        """Calculates the loan's principal."""
         if self._user_inputs_are_valid() is False:
             return "Invalid User Inputs"
         if self._home_affordability_price_is_valid() is False:
@@ -129,60 +84,45 @@ class AffordabilityCalculator:
         return str(round(loan_principal))
 
     def calculate_loan_interest(self) -> str:
-        """
-        Use this function to calculate the loan's interest.
-        """
+        """Calculates the loan's interest."""
         if self._user_inputs_are_valid() is False:
             return "Invalid User Inputs"
         if self._home_affordability_price_is_valid() is False:
             return "Invalid Calculation From calculate_home_affordability_price() Function"
-        loan_interest = float(self.calculate_total_home_loan_price()) - float(self.calculate_loan_principal())
+        total_home_loan_price = float(self.calculate_total_home_loan_price())
+        loan_principal = float(self.calculate_loan_principal())
+        loan_interest = total_home_loan_price - loan_principal
         return str(round(loan_interest))
 
     # Helper Functions
     def _convert_annual_interest_rate_to_monthly_interest_rate(self):
-        """
-        Use this function to convert annual interest rate to monthly interest rate
-        """
+        """Converts annual interest rate to monthly interest rate."""
         return self.interest_rate / 100 / 12
 
     def _convert_loan_term_length_into_months(self):
-        """
-        Use this function to convert loan term length from years to months
-        """
+        """Converts loan term length from years to months."""
         return self.loan_term * 12
 
     def _calculate_numerator(self) -> float:
-        """
-        Use this function to calculate the numerator in the calculate_home_affordability_price()
-        function.
-        """
+        """Helper function for the calculate_home_affordability_price() function."""
         interest_rate = self._convert_annual_interest_rate_to_monthly_interest_rate()
         loan_term = self._convert_loan_term_length_into_months()
         return interest_rate * math.pow((1 + interest_rate), loan_term)
 
     def _calculate_denominator(self) -> float:
-        """
-        Use this function to calculate the denominator in the calculate_home_affordability_price()
-        function.
-        """
+        """Helper function for the calculate_home_affordability_price() function."""
         interest_rate = self._convert_annual_interest_rate_to_monthly_interest_rate()
         loan_term = self._convert_loan_term_length_into_months()
         return math.pow((1 + interest_rate), loan_term) - 1
 
     def _calculate_loan_affordability(self, numerator, denominator) -> float:
-        """
-        Use this function to calculate the loan affordability in the
-        calculate_home_affordability_price() function.
-        """
+        """Helper function for the calculate_home_affordability_price() function."""
         return (self.monthly_payment * denominator) / numerator
 
     def _calculate_monthly_payment(self) -> float:
-        """
-        This is a helper function for calculate_total_home_loan_price that calculates an estimated
-        monthly home loan payment based on provided financial variables.
-        """
-        if self._user_inputs_are_valid() is False or self._home_affordability_price_is_valid() is False:
+        """Helper function for the calculate_total_home_loan_price() function."""
+        if self._user_inputs_are_valid() is False \
+                or self._home_affordability_price_is_valid() is False:
             return -1.0
         loan_amount = self.home_affordability_price - self.down_payment
 
@@ -197,7 +137,3 @@ class AffordabilityCalculator:
                                           math.pow(1 + interest_rate, loan_term) - 1)
 
         return monthly_payment
-
-
-if __name__ == "__main__":
-    calculator = AffordabilityCalculator()
