@@ -4,7 +4,7 @@ from models.affordability_calculator import AffordabilityCalculator
 
 @pytest.fixture
 def calculator():
-    return AffordabilityCalculator(1500.0, 20000.0, 5, 30)
+    return AffordabilityCalculator("1500.0", "20000.0", "5", "30")
 
 
 def test_user_inputs_are_valid(calculator):
@@ -12,14 +12,6 @@ def test_user_inputs_are_valid(calculator):
 
     calculator.monthly_payment = -1.0
     assert calculator._user_inputs_are_valid() == False
-
-
-def test_home_affordability_price_is_valid(calculator):
-    calculator.home_affordability_price = 300000
-    assert calculator._home_affordability_price_is_valid() == True
-
-    calculator.home_affordability_price = -1
-    assert calculator._home_affordability_price_is_valid() == False
 
 
 def test_convert_string_number_into_float():
@@ -31,15 +23,12 @@ def test_convert_string_number_into_float():
 def test_calculate_home_affordability_price(calculator):
     result = calculator.calculate_home_affordability_price()
     assert result != "Invalid User Inputs"
-    assert result != "Invalid Calculation From calculate_home_affordability_price() Function"
     assert calculator.calculate_home_affordability_price() == "299422"
 
 
 def test_calculate_total_home_loan_price(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_total_home_loan_price()
-    assert result != "Invalid User Inputs"
-    assert result != "Invalid Calculation From calculate_home_affordability_price() Function"
     assert result != "Invalid Calculation From _calculate_monthly_payment() Function"
     assert calculator.calculate_total_home_loan_price() == "539999"
 
@@ -47,16 +36,12 @@ def test_calculate_total_home_loan_price(calculator):
 def test_calculate_loan_principal(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_loan_principal()
-    assert result != "Invalid User Inputs"
-    assert result != "Invalid Calculation From calculate_home_affordability_price() Function"
     assert calculator.calculate_loan_principal() == "279422"
 
 
 def test_calculate_loan_interest(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_loan_interest()
-    assert result != "Invalid User Inputs"
-    assert result != "Invalid Calculation From calculate_home_affordability_price() Function"
     assert calculator.calculate_loan_interest() == "260577"
 
 
