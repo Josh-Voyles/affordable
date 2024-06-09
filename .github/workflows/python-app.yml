@@ -28,7 +28,7 @@ jobs:
 
     - name: Install dependencies (Linux and macOS)
       run: |
-        sudo apt update && apt install -y python3-opencv
+        sudo apt update && sudo apt install -y python3-opencv
         python3 -m pip install --upgrade pip
         pip install flake8 
         pip install -r requirements.txt
