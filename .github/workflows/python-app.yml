@@ -29,7 +29,7 @@ jobs:
     - name: Install dependencies (Linux and macOS)
       run: |
         python3 -m pip install --upgrade pip
-        pip uninstall opencv-python
+        sudo apt-get update && sudo apt-get install -y python3-opencv
         pip install opencv-python-headless
         pip install flake8 
         pip install -r requirements.txt
