@@ -6,6 +6,10 @@ from models.affordability_calculator import AffordabilityCalculator
 def calculator():
     return AffordabilityCalculator("1500.0", "20000.0", "5", "30")
 
+@pytest.fixture
+def zero_interest_calculator():
+    return AffordabilityCalculator("1500.0", "20000.0", "0", "30")
+
 
 def test_user_inputs_are_valid(calculator):
     assert calculator._user_inputs_are_valid() == True
@@ -24,6 +28,12 @@ def test_calculate_home_affordability_price(calculator):
     result = calculator.calculate_home_affordability_price()
     assert result != "Invalid User Inputs"
     assert calculator.calculate_home_affordability_price() == "299422"
+
+
+def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
+    result = zero_interest_calculator.calculate_home_affordability_price()
+    assert result != "Invalid User Inputs"
+    assert result == "560000"
 
 
 def test_calculate_total_home_loan_price(calculator):

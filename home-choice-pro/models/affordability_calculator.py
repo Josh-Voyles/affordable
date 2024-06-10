@@ -43,13 +43,22 @@ class AffordabilityCalculator:
             return -1.0
 
     # Calculation Functions
+    def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
+        result = zero_interest_calculator.calculate_home_affordability_price()
+        assert result != "Invalid User Inputs"
+        assert result == "560000"
+
     def calculate_home_affordability_price(self) -> str:
         """Calculates the maximum home price that a user can afford."""
         if not self._user_inputs_are_valid():
             return "Invalid User Inputs"
-        numerator = self._calculate_numerator()
-        denominator = self._calculate_denominator()
-        loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
+        if self.interest_rate == 0:
+            loan_term_months = self._convert_loan_term_length_into_months()
+            loan_affordability_price = self.monthly_payment * loan_term_months
+        else:
+            numerator = self._calculate_numerator()
+            denominator = self._calculate_denominator()
+            loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
         home_affordability_price = loan_affordability_price + self.down_payment
         self.home_affordability_price = round(home_affordability_price)
         return str(round(home_affordability_price))
