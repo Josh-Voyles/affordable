@@ -17,6 +17,7 @@ import re
 from PyQt5.QtWidgets import QMainWindow
 from views.main_window_ui import Ui_MainWindow
 from views.pop_up_error_window import ErrorWindow
+from models.affordability_calculator import AffordabilityCalculator as af
 
 VALID_ENTRY = r'^[0-9]+\.?[0-9]*$'
 
@@ -40,16 +41,32 @@ class MainWindow(QMainWindow):
 
     def calculate_house(self):
         if self.verify_digits():
-            # call calculations
-            pass
+            calc = af(
+                    self.ui.monthlyPaymentEdit.text(),
+                    self.ui.dpEdit.text(),
+                    self.ui.interestRateEdit.text(),
+                    self.ui.termComboBox.currentText()
+                    )
+            self.display_results(calc)
+
         else:
             self.display_error()
+
+    def display_results(self, calc):
+        self.ui.homeAffordabilityLabelNumber.setText('$' + calc.calculate_home_affordability_price())
+        self.ui.totalCostLabelNumber.setText('$' + calc.calculate_total_home_loan_price())
+        self.ui.principalLabelNumber.setText('$' + calc.calculate_loan_principal())
+        self.ui.interestLabelNumber.setText('$' + calc.calculate_loan_interest())
 
     def reset(self):
         for edit in self.editBoxes:
             edit.setText('0')
         self.ui.radioButtonDollar.setChecked(True)
         self.ui.termComboBox.setCurrentIndex(0)
+        self.ui.homeAffordabilityLabelNumber.setText('$0')
+        self.ui.totalCostLabelNumber.setText('$0')
+        self.ui.principalLabelNumber.setText('$0')
+        self.ui.interestLabelNumber.setText('$0')
 
 
     def verify_digits(self):

@@ -110,6 +110,20 @@ def test_loan_term_box(main_window, qtbot):
     qtbot.keyClicks(main_window.ui.termComboBox, '15')
     assert main_window.ui.termComboBox.currentText() == '15'
 
+def test_calculate_house(main_window, qtbot):
+    main_window.ui.monthlyPaymentEdit.clear()
+    qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, '1000')
+    main_window.ui.dpEdit.clear()
+    qtbot.keyClicks(main_window.ui.dpEdit, '1')
+    main_window.ui.interestRateEdit.clear()
+    qtbot.keyClicks(main_window.ui.interestRateEdit, '1')
+    qtbot.mouseClick(main_window.ui.calcPushButton, QtCore.Qt.LeftButton)
+    assert main_window.ui.homeAffordabilityLabelNumber.text() == '$310908'
+    assert main_window.ui.totalCostLabelNumber.text() == '$360000'
+    assert main_window.ui.principalLabelNumber.text() == '$310907'
+    assert main_window.ui.interestLabelNumber.text() == '$49093'
+
+
 def test_reset(main_window, qtbot):
     main_window.ui.monthlyPaymentEdit.clear()
     qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, '12345')
@@ -126,6 +140,10 @@ def test_reset(main_window, qtbot):
     assert main_window.ui.interestRateEdit.text() == '0'
     assert main_window.ui.termComboBox.currentText() == '30'
     assert main_window.ui.radioButtonDollar.isChecked()
+    assert main_window.ui.homeAffordabilityLabelNumber.text() == '$0'
+    assert main_window.ui.totalCostLabelNumber.text() == '$0'
+    assert main_window.ui.principalLabelNumber.text() == '$0'
+    assert main_window.ui.interestLabelNumber.text() == '$0'
 
 
 # this should be the last thing
