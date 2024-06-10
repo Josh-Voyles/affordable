@@ -91,10 +91,14 @@ class AffordabilityCalculator:
         """Helper function for the calculate_home_affordability_price() function."""
         interest_rate = self._convert_annual_interest_rate_to_monthly_interest_rate()
         loan_term = self._convert_loan_term_length_into_months()
-        return math.pow((1 + interest_rate), loan_term) - 1
-
+        dem = math.pow((1 + interest_rate), loan_term) - 1
+        if dem == 0:
+            return loan_term
+        return dem
     def _calculate_loan_affordability(self, numerator, denominator) -> float:
         """Helper function for the calculate_home_affordability_price() function."""
+        if numerator == 0:
+            numerator = 1
         return (self.monthly_payment * denominator) / numerator
 
     def _calculate_monthly_payment(self) -> float:
