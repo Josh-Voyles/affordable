@@ -13,9 +13,12 @@ Zaria Gibbs
 Calls MainWindow from auto-generated QT Designer Files
 
 """
+import re
 from PyQt5.QtWidgets import QMainWindow
 from views.main_window_ui import Ui_MainWindow
 from views.pop_up_error_window import ErrorWindow
+
+VALID_ENTRY = r'^[0-9]+\.?[0-9]*$'
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -51,7 +54,7 @@ class MainWindow(QMainWindow):
 
     def verify_digits(self):
         for edit in self.editBoxes:
-            if not edit.text().isdigit():
+            if not re.match(VALID_ENTRY, edit.text()):
                 return False
         return True
 
