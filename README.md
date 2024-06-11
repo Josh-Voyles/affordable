@@ -21,30 +21,38 @@ Many home buyers use a calculator to determine their monthly house payment, but 
 
 ## **File Structure**
 ```
-Home-Choice-Pro/
-├── CONTRIBUTING.md            # Directions for Contributing to the project
-├── requirements.txt           # List of project dependencies
-├── README.md                  # Project overview and documentation
-├── LICENSE                    # License information
-└── home-choice-pro/           # Main application package
-    ├── __init__.py
-    ├── main.py                # Entry point of the application
-    ├── models/                # Data models (for analytics and logic classes)
-    ├── docs/                  # Documentation of project
-    ├── images/                # Images used in project
-    ├── views/                 # UI files and components, controls for handling logic & analytics
-    │    ├── __init__.py
-    │    ├── main_window.py    # Main window class
-    │    └── other_windows.py       # Other UI files
-    │    
-    ├── tests/                 # Unit tests
-    │   ├── __init__.py
-    │   ├── tests_models/
-    │   └── tests_views/
-    │
-    └── resources/             # Resources like images, icons, etc.
-        ├── styles/
-        └── all_ui.ui           # UI files created with Qt Designer
+├── CONTRIBUTING.md
+├── home-choice-pro
+│   ├── docs
+│   │   └── user_guide.md
+│   ├── images
+│   │   └── Gemini_Generated_Image_njly4xnjly4xnjly.jpeg
+│   ├── main.py
+│   ├── models
+│   │   ├── affordability_calculator.py
+│   │   └── __init__.py
+│   ├── resources
+│   │   ├── main_window.ui
+│   │   ├── pop_up_error_window.ui
+│   │   └── resources.qrc
+│   ├── resources_rc.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── test_models
+│   │   │   ├── __init__.py
+│   │   │   └── test_affordability_calculator.py
+│   │   └── test_views
+│   │       ├── __init__.py
+│   │       └── test_main_window.py
+│   └── views
+│       ├── __init__.py
+│       ├── main_window.py
+│       ├── main_window_ui.py
+│       ├── pop_up_error_window.py
+│       └── pop_up_error_window_ui.py
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ## **Contributors:**
