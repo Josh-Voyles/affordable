@@ -22,14 +22,13 @@ Many home buyers use a calculator to determine their monthly house payment, but 
 ## **File Structure**
 ```
 Home-Choice-Pro/
-│   CONTRIBUTING.md            # Directions for Contributing to the project
+├── CONTRIBUTING.md            # Directions for Contributing to the project
 ├── requirements.txt           # List of project dependencies
 ├── README.md                  # Project overview and documentation
 ├── LICENSE                    # License information
 └── home-choice-pro/           # Main application package
     ├── __init__.py
     ├── main.py                # Entry point of the application
-    ├── controllers/           # 
     ├── models/                # Data models (for analytics and logic classes)
     ├── docs/                  # Documentation of project
     ├── images/                # Images used in project
@@ -40,12 +39,12 @@ Home-Choice-Pro/
     │    
     ├── tests/                 # Unit tests
     │   ├── __init__.py
-    │   ├── test_main.py
-    │   └── other_tests.py
+    │   ├── tests_models/
+    │   └── tests_views/
     │
     └── resources/             # Resources like images, icons, etc.
         ├── styles/
-        └── other_ui.ui        # UI file created with Qt Designer
+        └── all_ui.ui           # UI files created with Qt Designer
 ```
 
 ## **Contributors:**
