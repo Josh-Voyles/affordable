@@ -21,32 +21,38 @@ Many home buyers use a calculator to determine their monthly house payment, but 
 
 ## **File Structure**
 ```
-Home-Choice-Pro/
-│
-├── main.py                # Entry point of the application
-├── requirements.txt       # List of project dependencies
-├── README.md              # Project overview and documentation
-├── LICENSE                # License information
-│
-├── app/                   # Main application package
-│   ├── __init__.py
-│   ├── main_window.py     # Main window class
-│   ├── controllers/       # Controllers for handling logic & analytics
-│   ├── models/            # Data models (for analytics and logic classes)
-│   └── views/             # UI files and components
-│       ├── __init__.py
-│       ├── main_window.ui # UI file created with Qt Designer
-│       └── other_ui.ui    # Other UI files
-│
-├── tests/                 # Unit tests
-│   ├── __init__.py
-│   ├── test_main.py
-│   └── other_tests.py
-│
-└── resources/             # Resources like images, icons, etc.
-    ├── images/
-    ├── icons/
-    └── styles/
+├── CONTRIBUTING.md
+├── home-choice-pro
+│   ├── docs
+│   │   └── user_guide.md
+│   ├── images
+│   │   └── Gemini_Generated_Image_njly4xnjly4xnjly.jpeg
+│   ├── main.py
+│   ├── models
+│   │   ├── affordability_calculator.py
+│   │   └── __init__.py
+│   ├── resources
+│   │   ├── main_window.ui
+│   │   ├── pop_up_error_window.ui
+│   │   └── resources.qrc
+│   ├── resources_rc.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── test_models
+│   │   │   ├── __init__.py
+│   │   │   └── test_affordability_calculator.py
+│   │   └── test_views
+│   │       ├── __init__.py
+│   │       └── test_main_window.py
+│   └── views
+│       ├── __init__.py
+│       ├── main_window.py
+│       ├── main_window_ui.py
+│       ├── pop_up_error_window.py
+│       └── pop_up_error_window_ui.py
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ## **Contributors:**
