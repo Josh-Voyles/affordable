@@ -17,7 +17,7 @@ from views.pop_up_error_window_ui import Ui_Form
 class ErrorWindow(QMainWindow):
     '''This displays the error window.'''
     def __init__(self):
-        super(ErrorWindow, self).__init__()
+        super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)

@@ -1,3 +1,19 @@
+"""
+Home Choice Pro Morgtage Calculator
+
+This application calculates 'how much house you can afford' based on monthly payment.
+
+UMGC CMSC 495 6380
+Class Project
+Joey Garcia
+Josh Voyles
+Randy Shreeves
+Zaria Gibbs
+
+Main logic class behind calculating house price based on monthly payment
+
+"""
+
 import math
 
 
@@ -44,7 +60,7 @@ class AffordabilityCalculator:
             return -1.0
 
     # Calculation Functions
-    def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
+    def test_calculate_home_affordability_price_with_zero_interest(self, zero_interest_calculator):
         """Test."""
         result = zero_interest_calculator.calculate_home_affordability_price()
         assert result != "Invalid User Inputs"
