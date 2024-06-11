@@ -2,6 +2,7 @@ import math
 
 
 class AffordabilityCalculator:
+    '''Calculates the afforadibility based on financial parameters'''
 
     # Class Variables
     monthly_payment: float
@@ -44,6 +45,7 @@ class AffordabilityCalculator:
 
     # Calculation Functions
     def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
+        """Test."""
         result = zero_interest_calculator.calculate_home_affordability_price()
         assert result != "Invalid User Inputs"
         assert result == "560000"
