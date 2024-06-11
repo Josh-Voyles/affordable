@@ -22,6 +22,7 @@ from models.affordability_calculator import AffordabilityCalculator as af
 VALID_ENTRY = r'^[0-9]+\.?[0-9]*$'
 
 class MainWindow(QMainWindow):
+    '''Sets up the UI for the main window of the application.'''
     def __init__(self):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
@@ -40,6 +41,8 @@ class MainWindow(QMainWindow):
         self.ui.resetPushButton.clicked.connect(self.reset)
 
     def calculate_house(self):
+        '''Checks if the inputs in the edit boxes are valid digits. If valid, calculations are made.
+        If invalid, an error message displays.'''
         if self.verify_digits():
             calc = af(
                     self.ui.monthlyPaymentEdit.text(),
@@ -53,12 +56,15 @@ class MainWindow(QMainWindow):
             self.display_error()
 
     def display_results(self, calc):
+        '''Creates and shows an error window to inform the user that the input
+        is invalid.'''
         self.ui.homeAffordabilityLabelNumber.setText('$' + calc.calculate_home_affordability_price())
         self.ui.totalCostLabelNumber.setText('$' + calc.calculate_total_home_loan_price())
         self.ui.principalLabelNumber.setText('$' + calc.calculate_loan_principal())
         self.ui.interestLabelNumber.setText('$' + calc.calculate_loan_interest())
 
     def reset(self):
+        '''Resets all edit boxes to 0.'''
         for edit in self.editBoxes:
             edit.setText('0')
         self.ui.radioButtonDollar.setChecked(True)
@@ -70,13 +76,13 @@ class MainWindow(QMainWindow):
 
 
     def verify_digits(self):
+        '''Checks each edit box to ensure that the text entered are digits.'''
         for edit in self.editBoxes:
             if not re.match(VALID_ENTRY, edit.text()):
                 return False
         return True
 
     def display_error(self):
+        '''Creates and shows an error window to inform user that the input is invalid.'''
         self.error = ErrorWindow()
         self.error.show()
-
-        
