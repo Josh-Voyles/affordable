@@ -22,31 +22,30 @@ Many home buyers use a calculator to determine their monthly house payment, but 
 ## **File Structure**
 ```
 Home-Choice-Pro/
-│
-├── main.py                # Entry point of the application
-├── requirements.txt       # List of project dependencies
-├── README.md              # Project overview and documentation
-├── LICENSE                # License information
-│
-├── app/                   # Main application package
-│   ├── __init__.py
-│   ├── main_window.py     # Main window class
-│   ├── controllers/       # Controllers for handling logic & analytics
-│   ├── models/            # Data models (for analytics and logic classes)
-│   └── views/             # UI files and components
-│       ├── __init__.py
-│       ├── main_window.ui # UI file created with Qt Designer
-│       └── other_ui.ui    # Other UI files
-│
-├── tests/                 # Unit tests
-│   ├── __init__.py
-│   ├── test_main.py
-│   └── other_tests.py
-│
-└── resources/             # Resources like images, icons, etc.
-    ├── images/
-    ├── icons/
-    └── styles/
+│   CONTRIBUTING.md            # Directions for Contributing to the project
+├── requirements.txt           # List of project dependencies
+├── README.md                  # Project overview and documentation
+├── LICENSE                    # License information
+└── home-choice-pro/           # Main application package
+    ├── __init__.py
+    ├── main.py                # Entry point of the application
+    ├── controllers/           # 
+    ├── models/                # Data models (for analytics and logic classes)
+    ├── docs/                  # Documentation of project
+    ├── images/                # Images used in project
+    ├── views/                 # UI files and components, controls for handling logic & analytics
+    │    ├── __init__.py
+    │    ├── main_window.py    # Main window class
+    │    └── other_windows.py       # Other UI files
+    │    
+    ├── tests/                 # Unit tests
+    │   ├── __init__.py
+    │   ├── test_main.py
+    │   └── other_tests.py
+    │
+    └── resources/             # Resources like images, icons, etc.
+        ├── styles/
+        └── other_ui.ui        # UI file created with Qt Designer
 ```
 
 ## **Contributors:**
