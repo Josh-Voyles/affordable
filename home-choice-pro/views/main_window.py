@@ -19,19 +19,20 @@ from views.main_window_ui import Ui_MainWindow
 from views.pop_up_error_window import ErrorWindow
 from models.affordability_calculator import AffordabilityCalculator as af
 
-VALID_ENTRY = r'^[0-9]+\.?[0-9]*$'
+VALID_ENTRY = r'^[0-9]*\.?[0-9]+$'
 
 class MainWindow(QMainWindow):
-    '''Sets up the UI for the main window of the application.'''
+    '''Builds main UI from auto-generated main_window_ui.'''
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
+        self.error = ErrorWindow()
 
         self.setWindowTitle("Home Choice Pro")
 
-        self.editBoxes = [
+        self.edit_boxes = [
                 self.ui.monthlyPaymentEdit,
                 self.ui.dpEdit,
                 self.ui.interestRateEdit,
@@ -41,8 +42,10 @@ class MainWindow(QMainWindow):
         self.ui.resetPushButton.clicked.connect(self.reset)
 
     def calculate_house(self):
-        '''Checks if the inputs in the edit boxes are valid digits. If valid, calculations are made.
-        If invalid, an error message displays.'''
+        '''
+        Checks edit boxes are valid digits -> calculations are made.
+        Invalid -> error message displays.
+        '''
         if self.verify_digits():
             calc = af(
                     self.ui.monthlyPaymentEdit.text(),
@@ -56,16 +59,16 @@ class MainWindow(QMainWindow):
             self.display_error()
 
     def display_results(self, calc):
-        '''Creates and shows an error window to inform the user that the input
-        is invalid.'''
-        self.ui.homeAffordabilityLabelNumber.setText('$' + calc.calculate_home_affordability_price())
+        """Display calculations in application header"""
+        self.ui.homeAffordabilityLabelNumber.setText \
+            ('$' + calc.calculate_home_affordability_price())
         self.ui.totalCostLabelNumber.setText('$' + calc.calculate_total_home_loan_price())
         self.ui.principalLabelNumber.setText('$' + calc.calculate_loan_principal())
         self.ui.interestLabelNumber.setText('$' + calc.calculate_loan_interest())
 
     def reset(self):
         '''Resets all edit boxes to 0.'''
-        for edit in self.editBoxes:
+        for edit in self.edit_boxes:
             edit.setText('0')
         self.ui.radioButtonDollar.setChecked(True)
         self.ui.termComboBox.setCurrentIndex(0)
@@ -76,13 +79,12 @@ class MainWindow(QMainWindow):
 
 
     def verify_digits(self):
-        '''Checks each edit box to ensure that the text entered are digits.'''
-        for edit in self.editBoxes:
+        '''Checks edit boxes -> digits are decimal and not empty.'''
+        for edit in self.edit_boxes:
             if not re.match(VALID_ENTRY, edit.text()):
                 return False
         return True
 
     def display_error(self):
-        '''Creates and shows an error window to inform user that the input is invalid.'''
-        self.error = ErrorWindow()
+        '''shows an error window to inform user that the input is invalid.'''
         self.error.show()
