@@ -26,14 +26,17 @@ class AffordabilityCalculator:
     interest_rate: float
     loan_term: float
     home_affordability_price: int
+    hoa_monthly_fee: float
 
     # Constructor
-    def __init__(self, monthly_payment: str, down_payment: str, interest_rate: str, loan_term: str):
+    def __init__(self, monthly_payment: str = "0", down_payment: str = "0",
+                 interest_rate: str = "0", loan_term: str = "0", hoa_monthly_fee: str = "0"):
         """Initializes class variables."""
         self.monthly_payment = self.convert_string_number_into_float(monthly_payment)
         self.down_payment = self.convert_string_number_into_float(down_payment)
         self.interest_rate = self.convert_string_number_into_float(interest_rate)
         self.loan_term = self.convert_string_number_into_float(loan_term)
+        self.hoa_monthly_fee = self.convert_string_number_into_float(hoa_monthly_fee)
 
     # Variable Checking Functions
     def _user_inputs_are_valid(self) -> bool:
@@ -42,7 +45,8 @@ class AffordabilityCalculator:
             self.monthly_payment,
             self.down_payment,
             self.interest_rate,
-            self.loan_term
+            self.loan_term,
+            self.hoa_monthly_fee
         ]
         if any(var == -1.0 for var in class_variables):
             return False
@@ -60,23 +64,13 @@ class AffordabilityCalculator:
             return -1.0
 
     # Calculation Functions
-    def test_calculate_home_affordability_price_with_zero_interest(self, zero_interest_calculator):
-        """Test."""
-        result = zero_interest_calculator.calculate_home_affordability_price()
-        assert result != "Invalid User Inputs"
-        assert result == "560000"
-
     def calculate_home_affordability_price(self) -> str:
         """Calculates the maximum home price that a user can afford."""
         if not self._user_inputs_are_valid():
             return "Invalid User Inputs"
-        if self.interest_rate == 0:
-            loan_term_months = self._convert_loan_term_length_into_months()
-            loan_affordability_price = self.monthly_payment * loan_term_months
-        else:
-            numerator = self._calculate_numerator()
-            denominator = self._calculate_denominator()
-            loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
+        numerator = self._calculate_numerator()
+        denominator = self._calculate_denominator()
+        loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
         home_affordability_price = loan_affordability_price + self.down_payment
         self.home_affordability_price = round(home_affordability_price)
         return str(round(home_affordability_price))
@@ -122,7 +116,13 @@ class AffordabilityCalculator:
 
     def _calculate_loan_affordability(self, numerator, denominator) -> float:
         """Helper function for the calculate_home_affordability_price() function."""
-        return (self.monthly_payment * denominator) / numerator
+        monthly_payment = self.monthly_payment - self.hoa_monthly_fee
+        if monthly_payment < 0:  # Desired monthly payment can't be less than monthly HOA fees
+            return -1
+        loan_term = self._convert_loan_term_length_into_months()
+        if numerator == 0:  # Numerator is 0 if interest rate inputted was 0%
+            return monthly_payment * loan_term
+        return (monthly_payment * denominator) / numerator  # If interest rate > 0%, return this
 
     def _calculate_monthly_payment(self) -> float:
         """Helper function for the calculate_total_home_loan_price() function."""
