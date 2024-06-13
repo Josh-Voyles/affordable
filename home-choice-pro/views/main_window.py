@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
                 self.ui.termComboBox.currentText(),
             )
             self.load_calculations(calc)
-            self.display_results(calc)
+            self.display_results()
 
         else:
             self.display_error()
