@@ -24,6 +24,13 @@ class Ui_MainWindow(object):
         MainWindow.setMaximumSize(QtCore.QSize(750, 610))
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
+        self.centralwidget.setSizePolicy(sizePolicy)
+        self.centralwidget.setMinimumSize(QtCore.QSize(750, 610))
+        self.centralwidget.setMaximumSize(QtCore.QSize(750, 610))
         self.centralwidget.setStyleSheet("QWidget {\n"
 "background-color: rgb(245, 250, 254);\n"
 "font: 57 14pt \"Yrsa\";\n"
