@@ -76,11 +76,9 @@ class MainWindow(QMainWindow):
         self.total_principal = calc.calculate_loan_principal()
         self.total_interest = calc.calculate_loan_interest()
         if not self.ui.dpEdit.text() == "0":
-            self.downpayment = str(
-                round(
-                    float(self.ui.dpEdit.text()) / float(self.home_affordability) * 100
-                )
-            )
+            downpayment_percentage = (float(self.ui.dpEdit.text()) 
+                                      / float(self.home_affordability) * 100)
+            self.downpayment = f"{downpayment_percentage:.2f}"
 
     def display_results(self):
         """Display calculations in application header"""
