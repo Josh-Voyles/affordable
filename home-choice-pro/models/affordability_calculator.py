@@ -29,8 +29,8 @@ class AffordabilityCalculator:
     hoa_monthly_fee: float
 
     # Constructor
-    def __init__(self, monthly_payment: str, down_payment: str, interest_rate: str, loan_term: str,
-                 hoa_monthly_fee: str):
+    def __init__(self, monthly_payment: str = "0", down_payment: str = "0",
+                 interest_rate: str = "0", loan_term: str = "0", hoa_monthly_fee: str = "0"):
         """Initializes class variables."""
         self.monthly_payment = self.convert_string_number_into_float(monthly_payment)
         self.down_payment = self.convert_string_number_into_float(down_payment)

@@ -10,6 +10,10 @@ def calculator():
 def zero_interest_calculator():
     return AffordabilityCalculator("1500.0", "20000.0", "0", "30", "50")
 
+@pytest.fixture
+def empty_calculator_fields():
+    return AffordabilityCalculator()
+
 
 def test_user_inputs_are_valid(calculator):
     assert calculator._user_inputs_are_valid() == True
@@ -34,6 +38,11 @@ def test_calculate_home_affordability_price_with_zero_interest(zero_interest_cal
     result = zero_interest_calculator.calculate_home_affordability_price()
     assert result != "Invalid User Inputs"
     assert result == "542000"
+
+def test_empty_calculator_fields(empty_calculator_fields):
+    result = empty_calculator_fields.calculate_home_affordability_price()
+    assert result != "Invalid User Inputs"
+    assert result == "0"
 
 
 def test_calculate_total_home_loan_price(calculator):
