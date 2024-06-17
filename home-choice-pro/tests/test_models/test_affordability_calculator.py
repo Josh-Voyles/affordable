@@ -30,38 +30,37 @@ def test_convert_string_number_into_float():
 
 def test_calculate_home_affordability_price(calculator):
     result = calculator.calculate_home_affordability_price()
-    assert result != "Invalid User Inputs"
-    assert calculator.calculate_home_affordability_price() == "290108"
+    assert result != -1
+    assert calculator.calculate_home_affordability_price() == 290108
 
 
 def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
     result = zero_interest_calculator.calculate_home_affordability_price()
-    assert result != "Invalid User Inputs"
-    assert result == "542000"
+    assert result != -1
+    assert result == 542000
 
 def test_empty_calculator_fields(empty_calculator_fields):
     result = empty_calculator_fields.calculate_home_affordability_price()
-    assert result != "Invalid User Inputs"
-    assert result == "0"
+    assert result != -1
+    assert result == 0
 
 
 def test_calculate_total_home_loan_price(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_total_home_loan_price()
-    assert result != "Invalid Calculation From _calculate_monthly_payment() Function"
-    assert calculator.calculate_total_home_loan_price() == "521999"
+    assert calculator.calculate_total_home_loan_price() == 521999
 
 
 def test_calculate_loan_principal(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_loan_principal()
-    assert calculator.calculate_loan_principal() == "270108"
+    assert calculator.calculate_loan_principal() == 270108
 
 
 def test_calculate_loan_interest(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_loan_interest()
-    assert calculator.calculate_loan_interest() == "251891"
+    assert calculator.calculate_loan_interest() == 251891
 
 
 def test_calculate_numerator(calculator):

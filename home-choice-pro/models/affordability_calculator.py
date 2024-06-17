@@ -64,41 +64,41 @@ class AffordabilityCalculator:
             return -1.0
 
     # Calculation Functions
-    def calculate_home_affordability_price(self) -> str:
+    def calculate_home_affordability_price(self) -> int:
         """Calculates the maximum home price that a user can afford."""
         if not self._user_inputs_are_valid():
-            return "Invalid User Inputs"
+            return -1
         numerator = self._calculate_numerator()
         denominator = self._calculate_denominator()
         loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
         home_affordability_price = loan_affordability_price + self.down_payment
         self.home_affordability_price = round(home_affordability_price)
-        return str(round(home_affordability_price))
+        return round(home_affordability_price)
 
-    def calculate_total_home_loan_price(self) -> str:
+    def calculate_total_home_loan_price(self) -> int:
         """Calculates the total cost of a home loan over the loan term."""
         monthly_payment = self._calculate_monthly_payment()
         total_home_loan_price = monthly_payment * self._convert_loan_term_length_into_months()
-        return str(round(total_home_loan_price))
+        return round(total_home_loan_price)
 
-    def calculate_loan_principal(self) -> str:
+    def calculate_loan_principal(self) -> int:
         """Calculates the loan's principal."""
         loan_principal = self.home_affordability_price - self.down_payment
-        return str(round(loan_principal))
+        return round(loan_principal)
 
-    def calculate_loan_interest(self) -> str:
+    def calculate_loan_interest(self) -> int:
         """Calculates the loan's interest."""
         total_home_loan_price = float(self.calculate_total_home_loan_price())
         loan_principal = float(self.calculate_loan_principal())
         loan_interest = total_home_loan_price - loan_principal
-        return str(round(loan_interest))
+        return round(loan_interest)
 
     # Helper Functions
-    def _convert_annual_interest_rate_to_monthly_interest_rate(self):
+    def _convert_annual_interest_rate_to_monthly_interest_rate(self) -> float:
         """Converts annual interest rate to monthly interest rate."""
         return self.interest_rate / 100 / 12
 
-    def _convert_loan_term_length_into_months(self):
+    def _convert_loan_term_length_into_months(self) -> float:
         """Converts loan term length from years to months."""
         return self.loan_term * 12
 
