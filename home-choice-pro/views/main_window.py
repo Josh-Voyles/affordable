@@ -26,12 +26,11 @@ VALID_ENTRY = r"^[0-9]*\.?[0-9]+$"
 class MainWindow(QMainWindow):
     """Builds main UI from auto-generated main_window_ui."""
 
-    home_affordability: str
-    total_loan_cost: str
-    total_principal: str
-    total_interest: str
-    downpayment: str = "0"
-
+    home_affordability: int
+    total_loan_cost: int
+    total_principal: int
+    total_interest: int
+    downpayment: int = 0
 
     def __init__(self):
         super().__init__()
@@ -76,17 +75,20 @@ class MainWindow(QMainWindow):
         self.total_principal = calc.calculate_loan_principal()
         self.total_interest = calc.calculate_loan_interest()
         if not self.ui.dpEdit.text() == "0":
-            downpayment_percentage = (float(self.ui.dpEdit.text()) 
-                                      / float(self.home_affordability) * 100)
-            self.downpayment = f"{downpayment_percentage:.2f}"
+            (float(self.ui.dpEdit.text()) / self.home_affordability * 100)
+            self.downpayment = round(
+                float(self.ui.dpEdit.text()) / self.home_affordability * 100
+            )
 
     def display_results(self):
         """Display calculations in application header"""
-        self.ui.homeAffordabilityLabelNumber.setText("$" + self.home_affordability)
-        self.ui.totalCostLabelNumber.setText("$" + self.total_loan_cost)
-        self.ui.principalLabelNumber.setText("$" + self.total_principal)
-        self.ui.interestLabelNumber.setText("$" + self.total_interest)
-        self.ui.downPaymentHeaderLabel.setText(f"Down Payment: {self.downpayment}%")
+        self.ui.homeAffordabilityLabelNumber.setText("$" + str(self.home_affordability))
+        self.ui.totalCostLabelNumber.setText("$" + str(self.total_loan_cost))
+        self.ui.principalLabelNumber.setText("$" + str(self.total_principal))
+        self.ui.interestLabelNumber.setText("$" + str(self.total_interest))
+        self.ui.downPaymentHeaderLabel.setText(
+            f"Down Payment: {str(self.downpayment)}%"
+        )
 
     def reset(self):
         """Resets all edit boxes to 0."""
