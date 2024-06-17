@@ -16,7 +16,11 @@ This file will serve as the main entry point to the program.
 import sys
 
 from PyQt5.QtWidgets import QApplication
+from PyQt5 import QtWidgets, QtCore, QtGui
 from views.main_window import MainWindow
+
+QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
