@@ -4,11 +4,11 @@ from models.affordability_calculator import AffordabilityCalculator
 
 @pytest.fixture
 def calculator():
-    return AffordabilityCalculator("1500.0", "20000.0", "5", "30", "50")
+    return AffordabilityCalculator("1500.0", "20000.0", "5", "30", "50", "1.5")
 
 @pytest.fixture
 def zero_interest_calculator():
-    return AffordabilityCalculator("1500.0", "20000.0", "0", "30", "50")
+    return AffordabilityCalculator("1500.0", "20000.0", "0", "30", "50", "1.5")
 
 @pytest.fixture
 def empty_calculator_fields():
@@ -31,13 +31,14 @@ def test_convert_string_number_into_float():
 def test_calculate_home_affordability_price(calculator):
     result = calculator.calculate_home_affordability_price()
     assert result != -1
-    assert calculator.calculate_home_affordability_price() == 290108
+    assert calculator.calculate_home_affordability_price() == 235314
 
 
 def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
     result = zero_interest_calculator.calculate_home_affordability_price()
     assert result != -1
-    assert result == 542000
+    assert result == 373793
+
 
 def test_empty_calculator_fields(empty_calculator_fields):
     result = empty_calculator_fields.calculate_home_affordability_price()
@@ -48,19 +49,19 @@ def test_empty_calculator_fields(empty_calculator_fields):
 def test_calculate_total_home_loan_price(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_total_home_loan_price()
-    assert calculator.calculate_total_home_loan_price() == 521999
+    assert calculator.calculate_total_home_loan_price() == 416107
 
 
 def test_calculate_loan_principal(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_loan_principal()
-    assert calculator.calculate_loan_principal() == 270108
+    assert calculator.calculate_loan_principal() == 215314
 
 
 def test_calculate_loan_interest(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator.calculate_loan_interest()
-    assert calculator.calculate_loan_interest() == 251891
+    assert calculator.calculate_loan_interest() == 200793
 
 
 def test_calculate_numerator(calculator):
@@ -86,5 +87,5 @@ def test_calculate_loan_affordability(calculator):
 
 def test_calculate_monthly_payment(calculator):
     calculator.calculate_home_affordability_price()
-    result = calculator._calculate_monthly_payment()
+    result = calculator._calculate_monthly_mortgage_payment()
     assert isinstance(result, float)
