@@ -125,10 +125,10 @@ def test_calculate_house(main_window, qtbot):
     main_window.ui.interestRateEdit.clear()
     qtbot.keyClicks(main_window.ui.interestRateEdit, "1")
     qtbot.mouseClick(main_window.ui.calcPushButton, QtCore.Qt.LeftButton)
-    assert main_window.ui.homeAffordabilityLabelNumber.text() == "$310908"
-    assert main_window.ui.totalCostLabelNumber.text() == "$360000"
-    assert main_window.ui.principalLabelNumber.text() == "$310907"
-    assert main_window.ui.interestLabelNumber.text() == "$49093"
+    assert main_window.ui.homeAffordabilityLabelNumber.text() == "$310,908"
+    assert main_window.ui.totalCostLabelNumber.text() == "$360,000"
+    assert main_window.ui.principalLabelNumber.text() == "$310,907"
+    assert main_window.ui.interestLabelNumber.text() == "$49,093"
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 0%"
 
 

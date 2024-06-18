@@ -82,12 +82,12 @@ class MainWindow(QMainWindow):
 
     def display_results(self):
         """Display calculations in application header"""
-        self.ui.homeAffordabilityLabelNumber.setText("$" + str(self.home_affordability))
-        self.ui.totalCostLabelNumber.setText("$" + str(self.total_loan_cost))
-        self.ui.principalLabelNumber.setText("$" + str(self.total_principal))
-        self.ui.interestLabelNumber.setText("$" + str(self.total_interest))
+        self.ui.homeAffordabilityLabelNumber.setText(f"${self.home_affordability:,}")
+        self.ui.totalCostLabelNumber.setText(f"${self.total_loan_cost:,}")
+        self.ui.principalLabelNumber.setText(f"${self.total_principal:,}")
+        self.ui.interestLabelNumber.setText(f"${self.total_interest:,}")
         self.ui.downPaymentHeaderLabel.setText(
-            f"Down Payment: {str(self.downpayment)}%"
+            f"Down Payment: {self.downpayment}%"
         )
 
     def reset(self):
