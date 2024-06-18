@@ -578,7 +578,7 @@ QPushButton:hover {
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-151</y>
+          <y>0</y>
           <width>625</width>
           <height>600</height>
          </rect>
@@ -1176,7 +1176,7 @@ QPushButton:hover {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>HOA</string>
+               <string>HOA:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
