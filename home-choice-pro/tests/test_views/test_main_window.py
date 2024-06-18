@@ -53,33 +53,44 @@ def test_empty_edit_boxes(main_window):
     assert main_window.ui.monthlyPaymentEdit.text() == "0"
     assert main_window.ui.dpEdit.text() == "0"
     assert main_window.ui.interestRateEdit.text() == "0"
+    assert main_window.ui.HOAEdit.text() == "0"
 
 
 def test_verify_digits(main_window):
     main_window.ui.monthlyPaymentEdit.setText("1")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText("1")
-    assert main_window.verify_digits() == True
+    assert main_window.verify_digits() is True
     main_window.ui.monthlyPaymentEdit.setText("a")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText("1")
-    assert main_window.verify_digits() == False
+    assert main_window.verify_digits() is False
     main_window.ui.monthlyPaymentEdit.setText("1")
     main_window.ui.dpEdit.setText("b")
     main_window.ui.interestRateEdit.setText("1")
-    assert main_window.verify_digits() == False
+    assert main_window.verify_digits() is False
     main_window.ui.monthlyPaymentEdit.setText("1")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText("c")
-    assert main_window.verify_digits() == False
+    assert main_window.verify_digits() is False
     main_window.ui.monthlyPaymentEdit.setText("")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText("1")
-    assert main_window.verify_digits() == False
+    assert main_window.verify_digits() is False
     main_window.ui.monthlyPaymentEdit.setText("1")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText(" ")
-    assert main_window.verify_digits() == False
+    assert main_window.verify_digits() is False
+    main_window.ui.monthlyPaymentEdit.setText("1")
+    main_window.ui.dpEdit.setText("1")
+    main_window.ui.interestRateEdit.setText("1")
+    main_window.ui.HOAEdit.setText("1")
+    assert main_window.verify_digits() is True
+    main_window.ui.monthlyPaymentEdit.setText("1")
+    main_window.ui.dpEdit.setText("1")
+    main_window.ui.interestRateEdit.setText("1")
+    main_window.ui.HOAEdit.setText("b")
+    assert main_window.verify_digits() is False
 
 
 def test_display_error(main_window, qtbot):
@@ -117,12 +128,22 @@ def test_loan_term_box(main_window, qtbot):
     assert main_window.ui.termComboBox.currentText() == "15"
 
 
+def test_hoa_edit(main_window, qtbot):
+    assert main_window.ui.HOAEdit.text() == "0"
+    main_window.ui.HOAEdit.clear()
+    qtbot.keyClicks(main_window.ui.HOAEdit, "12345")
+    assert main_window.ui.HOAEdit.text() == "12345"
+
+
 def test_calculate_house(main_window, qtbot):
+    # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
-    qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "1000")
+    qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "1300")
     main_window.ui.dpEdit.clear()
     qtbot.keyClicks(main_window.ui.dpEdit, "1")
     main_window.ui.interestRateEdit.clear()
+    main_window.ui.HOAEdit.clear()
+    qtbot.keyClicks(main_window.ui.HOAEdit, "300")
     qtbot.keyClicks(main_window.ui.interestRateEdit, "1")
     qtbot.mouseClick(main_window.ui.calcPushButton, QtCore.Qt.LeftButton)
     assert main_window.ui.homeAffordabilityLabelNumber.text() == "$310908"
@@ -133,19 +154,25 @@ def test_calculate_house(main_window, qtbot):
 
 
 def test_reset(main_window, qtbot):
+    # test entering values
     main_window.ui.monthlyPaymentEdit.clear()
     qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "12345")
     main_window.ui.dpEdit.clear()
     qtbot.keyClicks(main_window.ui.dpEdit, "12345")
     main_window.ui.interestRateEdit.clear()
     qtbot.keyClicks(main_window.ui.interestRateEdit, "12345")
+    main_window.ui.HOAEdit.clear()
+    qtbot.keyClicks(main_window.ui.HOAEdit, "300")
     qtbot.mouseClick(main_window.ui.termComboBox, QtCore.Qt.LeftButton)
     qtbot.keyClicks(main_window.ui.termComboBox, "15")
+    # reset
     qtbot.mouseClick(main_window.ui.resetPushButton, QtCore.Qt.LeftButton)
+    # validate cleared
     assert main_window.ui.monthlyPaymentEdit.text() == "0"
     assert main_window.ui.dpEdit.text() == "0"
     assert main_window.ui.interestRateEdit.text() == "0"
     assert main_window.ui.termComboBox.currentText() == "30"
+    assert main_window.ui.HOAEdit.text() == "0"
     assert main_window.ui.homeAffordabilityLabelNumber.text() == "$0"
     assert main_window.ui.totalCostLabelNumber.text() == "$0"
     assert main_window.ui.principalLabelNumber.text() == "$0"
