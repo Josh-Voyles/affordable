@@ -669,7 +669,7 @@ QPushButton:hover {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Monthly Payment:</string>
+               <string>Monthly Budget:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1176,7 +1176,7 @@ QPushButton:hover {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>HOA:</string>
+               <string>Expected HOA:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
