@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
             self.ui.monthlyPaymentEdit,
             self.ui.dpEdit,
             self.ui.interestRateEdit,
+            self.ui.HOAEdit,
         ]
 
         self.ui.calcPushButton.clicked.connect(self.calculate_house)
@@ -61,6 +62,7 @@ class MainWindow(QMainWindow):
                 self.ui.dpEdit.text(),
                 self.ui.interestRateEdit.text(),
                 self.ui.termComboBox.currentText(),
+                self.ui.HOAEdit.text(),
             )
             self.load_calculations(calc)
             self.display_results()
