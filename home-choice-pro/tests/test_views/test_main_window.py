@@ -134,6 +134,12 @@ def test_hoa_edit(main_window, qtbot):
     qtbot.keyClicks(main_window.ui.HOAEdit, "12345")
     assert main_window.ui.HOAEdit.text() == "12345"
 
+def test_property_tax_edit(main_window, qtbot):
+    assert main_window.ui.propertyTaxEdit.text() == "0"
+    main_window.ui.propertyTaxEdit.clear()
+    qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.74")
+    assert main_window.ui.propertyTaxEdit.text() == "0.74"
+
 
 def test_calculate_house(main_window, qtbot):
     # enter values in gui
@@ -152,6 +158,27 @@ def test_calculate_house(main_window, qtbot):
     assert main_window.ui.interestLabelNumber.text() == "$49093"
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 0%"
 
+def test_calculate_house_2(main_window, qtbot):
+    # enter values in gui
+    main_window.ui.monthlyPaymentEdit.clear()
+    qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "2400")
+    main_window.ui.dpEdit.clear()
+    qtbot.keyClicks(main_window.ui.dpEdit, "50000")
+    main_window.ui.interestRateEdit.clear()
+    main_window.ui.HOAEdit.clear()
+    qtbot.keyClicks(main_window.ui.HOAEdit, "350")
+    qtbot.keyClicks(main_window.ui.interestRateEdit, "6.125")
+    qtbot.mouseClick(main_window.ui.termComboBox, QtCore.Qt.LeftButton)
+    qtbot.keyClicks(main_window.ui.termComboBox, "15")
+    main_window.ui.propertyTaxEdit.clear()
+    qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.74")
+    qtbot.mouseClick(main_window.ui.calcPushButton, QtCore.Qt.LeftButton)
+    assert main_window.ui.homeAffordabilityLabelNumber.text() == "$271329"
+    assert main_window.ui.totalCostLabelNumber.text() == "$338882"
+    assert main_window.ui.principalLabelNumber.text() == "$221329"
+    assert main_window.ui.interestLabelNumber.text() == "$117553"
+    assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 18%"
+
 
 def test_reset(main_window, qtbot):
     # test entering values
@@ -165,6 +192,8 @@ def test_reset(main_window, qtbot):
     qtbot.keyClicks(main_window.ui.HOAEdit, "300")
     qtbot.mouseClick(main_window.ui.termComboBox, QtCore.Qt.LeftButton)
     qtbot.keyClicks(main_window.ui.termComboBox, "15")
+    main_window.ui.propertyTaxEdit.clear()
+    qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.74")
     # reset
     qtbot.mouseClick(main_window.ui.resetPushButton, QtCore.Qt.LeftButton)
     # validate cleared
@@ -173,6 +202,7 @@ def test_reset(main_window, qtbot):
     assert main_window.ui.interestRateEdit.text() == "0"
     assert main_window.ui.termComboBox.currentText() == "30"
     assert main_window.ui.HOAEdit.text() == "0"
+    assert main_window.ui.propertyTaxEdit.text() == "0"
     assert main_window.ui.homeAffordabilityLabelNumber.text() == "$0"
     assert main_window.ui.totalCostLabelNumber.text() == "$0"
     assert main_window.ui.principalLabelNumber.text() == "$0"
