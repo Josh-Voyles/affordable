@@ -2,18 +2,16 @@
 
 ## **Table of Contents**
 - [**Home Choice Pro User Guide**](#home-choice-pro-user-guide)
-  - [**Table of Contents**](#table-of-contents)
+    [**Table of Contents**](#table-of-contents)
   - [Introduction](#introduction)
   - [Getting Started](#getting-started)
     - [System Requirements](#system-requirements)
-    - [Installation](#installation)
   - [Usage](#usage)
     - [Basic Commands](#basic-commands)
-    - [Configuration](#configuration)
     - [Input Guidelines](#input-guidelines)
     - [Features](#features)
     - [Troubleshooting](#troubleshooting)
-    - [Contributing](#contributing)
+    - [FAQ](#faq)
     - [License](#license)
     - [Acknowledgements](#acknowledgements)
     - [Disclaimer](#disclaimer)
@@ -24,19 +22,7 @@ Welcome to the user guide for **Home Choice Pro**. This guide will help you get 
 ## Getting Started
 
 ### System Requirements
-Before installing **Home Choice Pro**, ensure your system meets the following requirements:
-- Operating System:
-- Processor:
-- Memory:
-- Disk Space:
-- Other:
-
-### Installation
-Follow the steps below to install **Home Choice Pro** on your system:
-
-1. **Download**: Download the latest version from [link].
-2. **Install**: Run the installer and follow the on-screen instructions.
-3. **Setup**: Complete the initial setup by following [this guide](link).
+Please ensure your system is up to date for the best perfomance.
 
 ## Usage
 
@@ -49,15 +35,6 @@ Here are some basic commands to get you started:
 - `Chart`: Description of what command1 does.
 - `Settings`: Description of what command1 does.
 - `Help`: Description of what command1 does.
-
-### Configuration
-To configure **Home Choice Pro**, follow these steps:
-
-1. Open the configuration file located at `[path/to/config]`.
-2. Modify the settings as needed:
-   ```plaintext
-   setting1: value1
-   setting2: value2
 
 ### Input Guidelines
 To ensure smooth operation of **Home Choice Pro**, please adhere to the following input guidelines:
@@ -73,15 +50,27 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 
 ### Troubleshooting
 - **Issue 1:** The application does not start.
-  - *Solution:** Ensure that your system meets the minimum requirements and that all necessary dependencies are installed. Try restarting your computer and reinstalling the application if the problem persists.
+  - **Solution:** Ensure that your system meets the minimum requirements and that all necessary dependencies are installed. Try restarting your computer and reinstalling the application if the problem persists.
 - **Issue 2:** Error message "Configuration file not found".
   - **Solution:** Check that the configuration file is located in the correct directory and has the correct permissions.
 - **Issue 3:** The application crashes unexpectedly.
-  - **Solution:** Make sure your system has enough resources (RAM, disk space). Check the application logs located at '[path/to/logs]' for more information on the error. If the issue continues, contact support.
+  - **Solution:** Make sure your system has enough resources (RAM, disk space). 
 
-
-### Contributing
-
+### FAQ
+***What is a mortgage calculator?***
+A mortgage calculator is an online tool that helps potential homebuyers estimate their monthly or total mortgage payment(s). It takes into account various factors such as the loan amount, interest rate, loan term, and sometimes additional costs like property taxes, homeowners insurance, and private mortgage insurance (PMI). By providing these details, users can get a rough idea of what they might expect to pay each month for their mortgage.
+***What information do I need to use the mortgage calculator?***
+To use a mortgage calculator effectively, you need to input several pieces of information:
+  - Loan amount: The total amount of money you are borrowing to buy your home.
+  - Interest rate: The rate at which interest will accrue on your loan.
+  - Loan term: The length of time over which you will repay the loan, typically 15, 20, or 30 years.
+  ***Optional inputs might include:***
+  - Down payment: The amount of money you pay upfront toward the purchase price of the home.
+  - Property taxes: Annual taxes assessed by a government authority on your property, which are often estimated as a percentage of the property value.
+  - Homeowners insurance: An estimate of the insurance cost to cover potential damages to your home.
+  - PMI: Private mortgage insurance, which might be required if your down payment is less than 20% of the home's purchase price.
+***How accurate are mortgage calculators?***
+Mortgage calculators provide a good estimate of monthly or total payment(s) but should be considered approximations. They often don't account for fluctuations in property taxes, insurance premiums, or changes in interest rates for adjustable-rate mortgages. Additionally, they don't include maintenance costs or utilities, which need to be considered for a complete understanding of housing expenses. Therefore, while mortgage calculators are excellent for initial planning and comparisons, the actual mortgage payment may vary slightly due to these variables and lender-specific requirements.
 
 ### License
 
