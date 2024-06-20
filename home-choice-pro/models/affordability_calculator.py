@@ -28,11 +28,12 @@ class AffordabilityCalculator:
     home_affordability_price: int
     hoa_monthly_fee: float
     property_tax_percentage: float
+    homeowners_insurance_percentage: float
 
     # Constructor
     def __init__(self, monthly_payment: str = "0", down_payment: str = "0",
                  interest_rate: str = "0", loan_term: str = "0", hoa_monthly_fee: str = "0",
-                 property_tax_percentage: str = "0"):
+                 property_tax_percentage: str = "0", homeowners_insurance_percentage: str = "0"):
         """Initializes class variables."""
         self.monthly_payment = self.convert_string_number_into_float(monthly_payment)
         self.down_payment = self.convert_string_number_into_float(down_payment)
@@ -41,6 +42,8 @@ class AffordabilityCalculator:
         self.hoa_monthly_fee = self.convert_string_number_into_float(hoa_monthly_fee)
         self.property_tax_percentage = self.convert_string_number_into_float(
             property_tax_percentage)
+        self.homeowners_insurance_percentage = self.convert_string_number_into_float(
+            homeowners_insurance_percentage)
 
     # Variable Checking Functions
     def _user_inputs_are_valid(self) -> bool:
@@ -51,7 +54,8 @@ class AffordabilityCalculator:
             self.interest_rate,
             self.loan_term,
             self.hoa_monthly_fee,
-            self.property_tax_percentage
+            self.property_tax_percentage,
+            self.homeowners_insurance_percentage
         ]
         if any(var == -1.0 for var in class_variables):
             return False
@@ -77,7 +81,7 @@ class AffordabilityCalculator:
         denominator = self._calculate_denominator()
         loan_affordability_price = self._calculate_loan_affordability(numerator, denominator)
         self.home_affordability_price = round(loan_affordability_price + self.down_payment)
-        self._adjust_for_property_taxes()
+        self._adjust_for_property_taxes_and_homeowners_insurance()
         return round(self.home_affordability_price)
 
     def calculate_total_home_loan_price(self) -> int:
@@ -145,12 +149,15 @@ class AffordabilityCalculator:
                                           math.pow(1 + interest_rate, loan_term) - 1)
         return monthly_payment
 
-    def _adjust_for_property_taxes(self):
+    def _adjust_for_property_taxes_and_homeowners_insurance(self):
         """Helper function to factor property taxes into home affordability price."""
         monthly_property_tax_rate = self.property_tax_percentage / 100 / 12
+        monthly_insurance_rate = self.homeowners_insurance_percentage / 100 / 12
         while True:
             monthly_tax_payment = self.home_affordability_price * monthly_property_tax_rate
-            estimated_monthly_payment = self._calculate_monthly_mortgage_payment() + monthly_tax_payment
+            monthly_insurance_payment = self.home_affordability_price * monthly_insurance_rate
+            estimated_monthly_payment = self._calculate_monthly_mortgage_payment() + \
+                                        monthly_tax_payment + monthly_insurance_payment
             if estimated_monthly_payment <= (self.monthly_payment - self.hoa_monthly_fee):
                 break
             self.home_affordability_price -= 1
