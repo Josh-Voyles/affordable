@@ -249,12 +249,12 @@ QPushButton:hover {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="helpButton">
+          <widget class="QPushButton" name="guideButton">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
-            <string>Help</string>
+            <string>Guide</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -641,7 +641,7 @@ QPushButton:hover {
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="calculatorPage">
           <property name="sizePolicy">
@@ -684,7 +684,7 @@ QPushButton:hover {
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-20</y>
+                <y>0</y>
                 <width>646</width>
                 <height>600</height>
                </rect>
@@ -2005,7 +2005,7 @@ QPushButton:pressed {
            </sizepolicy>
           </property>
          </widget>
-         <widget class="QWidget" name="helpPage">
+         <widget class="QWidget" name="guidePage">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
