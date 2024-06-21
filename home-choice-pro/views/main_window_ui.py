@@ -258,7 +258,7 @@ class Ui_MainWindow(object):
         self.calcScrollArea.setObjectName("calcScrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setEnabled(True)
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 646, 600))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 645, 600))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -668,7 +668,7 @@ class Ui_MainWindow(object):
         self.insuranceLabel.setBuddy(self.insuranceEdit)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         self.quitButton.clicked.connect(MainWindow.close) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
