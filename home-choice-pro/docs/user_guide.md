@@ -10,31 +10,31 @@
     - [Basic Commands](#basic-commands)
     - [Input Guidelines](#input-guidelines)
     - [Features](#features)
-    - [Troubleshooting](#troubleshooting)
     - [FAQ](#faq)
     - [License](#license)
     - [Acknowledgements](#acknowledgements)
     - [Disclaimer](#disclaimer)
 
 ## Introduction
-Welcome to the user guide for **Home Choice Pro**. This guide will help you get started with installing, configuring, and using the software, as well as provide solutions to common issues.
+Welcome to **Home Choice Pro**. This mortgage calculator takes the provided input and gives you the total cost, principal, interest, and home affordability. This guide will help you with basic commands, features, and FAQ.
 
 ## Getting Started
 
 ### System Requirements
-Please ensure your system is up to date for the best perfomance.
+To ensure the best performance, please have the following:
+- MacOS 14.x or latest version
+- Windows 11 or latest version
+- Ubuntu (Linux) 24.04 or latest version
 
 ## Usage
 
 ### Basic Commands
 Here are some basic commands to get you started:
 
-- `Calculate`: Description of what command1 does.
-- `Reset`: Description of what command1 does.
-- `Quit`: Description of what command2 does.
-- `Chart`: Description of what command1 does.
-- `Settings`: Description of what command1 does.
-- `Help`: Description of what command1 does.
+- `Calculate`: Determines the home affordability from provided input.
+- `Reset`: Clears all inputs.
+- `Quit`: Exits out of the program.
+- `Guide`: Displays the user guide.
 
 ### Input Guidelines
 To ensure smooth operation of **Home Choice Pro**, please adhere to the following input guidelines:
@@ -43,34 +43,33 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 
 ### Features
 **Home Choice Pro** includes the following features:
-- Monthly Payment
+- Monthly Budget
+- Down Payment
 - Interest Rate
 - Loan Term
   - 15 years and 30 years
-
-### Troubleshooting
-- **Issue 1:** The application does not start.
-  - **Solution:** Ensure that your system meets the minimum requirements and that all necessary dependencies are installed. Try restarting your computer and reinstalling the application if the problem persists.
-- **Issue 2:** Error message "Configuration file not found".
-  - **Solution:** Check that the configuration file is located in the correct directory and has the correct permissions.
-- **Issue 3:** The application crashes unexpectedly.
-  - **Solution:** Make sure your system has enough resources (RAM, disk space). 
+- Property Tax Rate
+**Optional**
+- Private Mortgage Insurance (PMI) 
+- Expected HOA fee 
 
 ### FAQ
-***What is a mortgage calculator?***
-A mortgage calculator is an online tool that helps potential homebuyers estimate their monthly or total mortgage payment(s). It takes into account various factors such as the loan amount, interest rate, loan term, and sometimes additional costs like property taxes, homeowners insurance, and private mortgage insurance (PMI). By providing these details, users can get a rough idea of what they might expect to pay each month for their mortgage.
+***What is **Home Choice Pro**?***
+**Home Choice Pro** is a tool that helps potential homebuyers estimate not just their total cost, but other factors that will better prepare them. It takes into account various factors such as the monthly budget, down payment, interest rate, loan term, and HOA. By providing these details, users can get a better idea of what they might expect to pay all around. Unlike other mortgage calculators, **Home Choice Pro** gives you more estimates that gives you a closer estimate, which in turn, may help homebuyers save money.
 ***What information do I need to use the mortgage calculator?***
 To use a mortgage calculator effectively, you need to input several pieces of information:
-  - Loan amount: The total amount of money you are borrowing to buy your home.
+  - Monthly Budget: The amount you are willing to pay monthly.
+  - Down Payment: The initial up-front payment.
   - Interest rate: The rate at which interest will accrue on your loan.
-  - Loan term: The length of time over which you will repay the loan, typically 15, 20, or 30 years.
+  - Loan term: The length of time over which you will repay the loan, typically 15 or 30 years.
+  - Property Tax Rate: The tax on a property.
   ***Optional inputs might include:***
-  - Down payment: The amount of money you pay upfront toward the purchase price of the home.
-  - Property taxes: Annual taxes assessed by a government authority on your property, which are often estimated as a percentage of the property value.
-  - Homeowners insurance: An estimate of the insurance cost to cover potential damages to your home.
-  - PMI: Private mortgage insurance, which might be required if your down payment is less than 20% of the home's purchase price.
+  - Expected HOA Fee: Homeowners association fee to maintain all properties, shared amenities, and common areas within the association.
+  - Private Mortgage Insurance: A type of insurance for certain mortgages with high LTV ratios that protects the lender.
 ***How accurate are mortgage calculators?***
 Mortgage calculators provide a good estimate of monthly or total payment(s) but should be considered approximations. They often don't account for fluctuations in property taxes, insurance premiums, or changes in interest rates for adjustable-rate mortgages. Additionally, they don't include maintenance costs or utilities, which need to be considered for a complete understanding of housing expenses. Therefore, while mortgage calculators are excellent for initial planning and comparisons, the actual mortgage payment may vary slightly due to these variables and lender-specific requirements.
+***What is Private Mortgage Insurance?***
+When a homebuyer takes out a home loan or refinances their mortgage, their lender may require to pay PMI. Lenders may require it depending on the loan-to-value (LTV) ratio. If the homebuyer needs PMI, the lender will choose the provder of their choice. Typically, lenders will require homeowners to pay PMI while their LTV is above 8-%. Once their LTV is below 80%, the homebuyer can request to stop paying PMI.
 
 ### License
 
