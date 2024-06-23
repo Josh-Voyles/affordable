@@ -14,9 +14,11 @@ Calls MainWindow from auto-generated QT Designer Files
 
 """
 
+import os
 import re
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 from models.affordability_calculator import AffordabilityCalculator as af
+from views.markdown_viewer import MarkdownViewer
 from views.main_window_ui import Ui_MainWindow
 from views.pop_up_error_window import ErrorWindow
 
@@ -34,6 +36,9 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        self.window_setup()
+    
+    def window_setup(self):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
@@ -51,6 +56,7 @@ class MainWindow(QMainWindow):
 
         self.ui.calcPushButton.clicked.connect(self.calculate_house)
         self.ui.resetPushButton.clicked.connect(self.reset)
+        self.ui.guideButton.clicked.connect(self.activate_guide)
 
     def calculate_house(self):
         """
@@ -78,7 +84,7 @@ class MainWindow(QMainWindow):
         self.total_loan_cost = calc.calculate_total_home_loan_price()
         self.total_principal = calc.calculate_loan_principal()
         self.total_interest = calc.calculate_loan_interest()
-        if not self.ui.dpEdit.text() == "0":
+        if self.ui.dpEdit.text() != "0":
             (float(self.ui.dpEdit.text()) / self.home_affordability * 100)
             self.downpayment = round(
                 float(self.ui.dpEdit.text()) / self.home_affordability * 100
@@ -104,6 +110,20 @@ class MainWindow(QMainWindow):
         self.ui.principalLabelNumber.setText("$0")
         self.ui.interestLabelNumber.setText("$0")
         self.ui.downPaymentHeaderLabel.setText("-")
+
+    def activate_guide(self):
+        """Loads guide QWidget by replacing 'calculatorPage' QWidget"""
+        # User Guide relative path
+        userguide_mk_path = os.path.join(os.path.dirname(__file__), '..', 'docs', 'user_guide.md')
+
+        # Create an instance of MarkdownViewer
+        self.markdown_viewer = MarkdownViewer(userguide_mk_path, self.switch_to_calculator)
+
+        self.setCentralWidget(self.markdown_viewer)
+
+    def switch_to_calculator(self):
+        """Switch to back to Home Page."""
+        self.window_setup()
 
     def verify_digits(self):
         """Checks edit boxes -> digits are decimal and not empty."""
