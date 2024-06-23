@@ -1,3 +1,19 @@
+"""
+Home Choice Pro Morgtage Calculator
+
+This application calculates 'how much house you can afford' based on monthly payment.
+
+UMGC CMSC 495 6380
+Class Project
+Joey Garcia
+Josh Voyles
+Randy Shreeves
+Zaria Gibbs
+
+Calls UserGuide from the Main Window using a github css and markdown file 
+
+"""
+
 import os
 from PyQt5.QtWidgets import QWidget, QTextEdit, QVBoxLayout, QHBoxLayout, QPushButton, QScrollArea
 from PyQt5.QtGui import QTextCursor
@@ -8,11 +24,11 @@ class MarkdownViewer(QWidget):
     def __init__(self, file_path=None, go_back_callback=None):
         super().__init__()
         self.go_back_callback = go_back_callback
-        self.initUI()
+        self.init_ui()
         if file_path:
-            self.loadMarkdownFile(file_path)
+            self.load_markdown_file(file_path)
 
-    def initUI(self):
+    def init_ui(self):
         self.layout = QVBoxLayout(self)
 
         # Create a Go Back button
@@ -36,7 +52,11 @@ class MarkdownViewer(QWidget):
         self.layout.addLayout(top_bar_layout)
         self.layout.addWidget(scroll_area)
 
-        # Load CSS style from file
+        # Set CSS sheet
+        self.set_stylesheet()
+
+    def set_stylesheet(self):
+        """ Load GitHub CSS stylesheet from resources directory """
         css_path = os.path.join(os.path.dirname(__file__), '..', 'resources', 'github-markdown.css')
         try:
             with open(css_path, 'r') as css_file:
@@ -46,20 +66,23 @@ class MarkdownViewer(QWidget):
         except Exception as e:
             print(f"Error loading CSS file: {e}")
 
-    def loadMarkdownFile(self, fileName):
+    def load_markdown_file(self, file_name):
+        """ Loads Markdown File at Constructor Parameter Argument """
         try:
-            with open(fileName, 'r', encoding='utf-8') as file:
+            with open(file_name, 'r', encoding='utf-8') as file:
                 markdown_content = file.read()
-                self.displayMarkdown(markdown_content)
+                self.display_markdown(markdown_content)
         except Exception as e:
             print(f"Error reading file: {e}")
 
-    def displayMarkdown(self, content):
+    def display_markdown(self, content):
+        """ Sets & displays Markdown File """
         self.text_edit.clear()
         self.text_edit.setMarkdown(content)
         self.text_edit.moveCursor(QTextCursor.Start)
 
     def go_back(self):
+        """ 'Go Back' Button defined behavior"""
         if self.go_back_callback:
             self.go_back_callback()
 

@@ -39,6 +39,7 @@ class MainWindow(QMainWindow):
         self.window_setup()
     
     def window_setup(self):
+        """ Full UI Creation of MainWindow Object"""
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
@@ -112,7 +113,7 @@ class MainWindow(QMainWindow):
         self.ui.downPaymentHeaderLabel.setText("-")
 
     def activate_guide(self):
-        """Loads guide QWidget by replacing 'calculatorPage' QWidget"""
+        """Loads User Guide QWidget with MarkdownViewer Class"""
         # User Guide relative path
         userguide_mk_path = os.path.join(os.path.dirname(__file__), '..', 'docs', 'user_guide.md')
 
