@@ -16,7 +16,7 @@
     - [Disclaimer](#disclaimer)
 
 ## Introduction
-Welcome to **Home Choice Pro**. This mortgage calculator takes your monthly input and gives you your home affordability, along with your loan total cost, principal, and interest. This guide will help you with basic commands, features, and FAQ.
+Welcome to **Home Choice Pro**. This mortgage calculator takes your monthly budget and estimates a maximum house price for you, along with your loan total cost, principal, and interest. This guide will help you with basic commands, features, and FAQ.
 
 ## Getting Started
 
