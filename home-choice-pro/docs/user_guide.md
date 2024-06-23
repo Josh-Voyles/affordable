@@ -16,7 +16,7 @@
     - [Disclaimer](#disclaimer)
 
 ## Introduction
-Welcome to **Home Choice Pro**. This mortgage calculator takes the provided input and gives you the total cost, principal, interest, and home affordability. This guide will help you with basic commands, features, and FAQ.
+Welcome to **Home Choice Pro**. This mortgage calculator takes your monthly input and gives you your home affordability, along with your loan total cost, principal, and interest. This guide will help you with basic commands, features, and FAQ.
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ To ensure the best performance, please have the following:
 ### Basic Commands
 Here are some basic commands to get you started:
 
-- `Calculate`: Determines the home affordability from provided input.
+- `Calculate`: Determines the home affordability   from provided input.
 - `Reset`: Clears all inputs.
 - `Quit`: Exits out of the program.
 - `Guide`: Displays the user guide.
@@ -55,7 +55,7 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 
 ### FAQ
 ***What is **Home Choice Pro**?***
-**Home Choice Pro** is a tool that helps potential homebuyers estimate not just their total cost, but other factors that will better prepare them. It takes into account various factors such as the monthly budget, down payment, interest rate, loan term, and HOA. By providing these details, users can get a better idea of what they might expect to pay all around. Unlike other mortgage calculators, **Home Choice Pro** gives you more estimates that gives you a closer estimate, which in turn, may help homebuyers save money.
+**Home Choice Pro** is a tool that helps potential homebuyers estimate not just their total cost, but other factors that will better prepare them. It takes into account various factors such as the monthly budget, down payment, interest rate, loan term, and HOA. By providing these details, users can get a better idea of what they might expect to pay all around. Unlike other mortgage calculators, **Home Choice Pro** starts with the user's monthly budget first. It takes that number and the other provided input, and provides the homebuyer with their personalized home affordability. They are also provided with loan total cost, principal, and interest.
 ***What information do I need to use the mortgage calculator?***
 To use a mortgage calculator effectively, you need to input several pieces of information:
   - Monthly Budget: The amount you are willing to pay monthly.
@@ -69,7 +69,10 @@ To use a mortgage calculator effectively, you need to input several pieces of in
 ***How accurate are mortgage calculators?***
 Mortgage calculators provide a good estimate of monthly or total payment(s) but should be considered approximations. They often don't account for fluctuations in property taxes, insurance premiums, or changes in interest rates for adjustable-rate mortgages. Additionally, they don't include maintenance costs or utilities, which need to be considered for a complete understanding of housing expenses. Therefore, while mortgage calculators are excellent for initial planning and comparisons, the actual mortgage payment may vary slightly due to these variables and lender-specific requirements.
 ***What is Private Mortgage Insurance?***
-When a homebuyer takes out a home loan or refinances their mortgage, their lender may require to pay PMI. Lenders may require it depending on the loan-to-value (LTV) ratio. If the homebuyer needs PMI, the lender will choose the provder of their choice. Typically, lenders will require homeowners to pay PMI while their LTV is above 8-%. Once their LTV is below 80%, the homebuyer can request to stop paying PMI.
+When a homebuyer takes out a home loan or refinances their mortgage, their lender may require to pay PMI. The national average ranges from 0.19% to 2.25%. The amount a homebuyer will pay is based on two factors: 
+- the total loan amount: PMI costs are usually higher for larger mortgages
+- the homebuyers credit score: Lenders usually charge those with higher credit scores lower PMI percentages
+Lenders may require it depending on the loan-to-value (LTV) ratio. If the homebuyer needs PMI, the lender will choose the provider of their choice. Typically, lenders will require homeowners to pay PMI while their LTV is above 80%. Once their LTV is below 80%, the homebuyer can request to stop paying PMI.
 
 ### License
 
@@ -87,7 +90,7 @@ We would like to thank the following individuals and organizations for their sup
 
 3. **Interest Rates**: The interest rates used in the calculations are for illustrative purposes only and may not reflect the current rates offered by lenders. Interest rates fluctuate based on market conditions and individual financial profiles.
 
-4. **Additional Costs**: **Home Choice Pro** does not account for additional costs that may be associated with home ownership, such as property taxes, homeowner’s insurance, private mortgage insurance (PMI), and maintenance costs.
+4. **Additional Costs**: **Home Choice Pro** does not account for additional costs that may be associated with home ownership, such as appraisal fees, title search fees, and maintenance costs.
 
 5. **Accuracy of Information**: The accuracy of the results depends on the accuracy of the information you provide. Ensure that all inputs are correct and up to date for the most accurate estimates.
 
