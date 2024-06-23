@@ -16,7 +16,7 @@ Calls MainWindow from auto-generated QT Designer Files
 
 import os
 import re
-from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
+from PyQt5.QtWidgets import QMainWindow
 from models.affordability_calculator import AffordabilityCalculator as af
 from views.markdown_viewer import MarkdownViewer
 from views.main_window_ui import Ui_MainWindow

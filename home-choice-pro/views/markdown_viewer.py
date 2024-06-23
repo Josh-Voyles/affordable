@@ -1,4 +1,3 @@
-import sys
 import os
 from PyQt5.QtWidgets import QWidget, QTextEdit, QVBoxLayout, QHBoxLayout, QPushButton, QScrollArea
 from PyQt5.QtGui import QTextCursor
