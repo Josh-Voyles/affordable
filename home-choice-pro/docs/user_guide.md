@@ -16,7 +16,7 @@
     - [Disclaimer](#disclaimer)
 
 ## Introduction
-Welcome to **Home Choice Pro**. This mortgage calculator takes your monthly budget and estimates a maximum house price for you, along with your loan total cost, principal, and interest. This guide will help you with basic commands, features, and FAQ.
+Welcome to **Home Choice Pro**. This mortgage calculator takes your desired monthly payment and estimates a maximum house price for you, along with your loan total cost, principal, and interest. This guide will help you with basic commands, features, and FAQ.
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 
 ### Features
 **Home Choice Pro** includes the following features:
-- Monthly Budget
+- Desired Monthly Payment
 - Down Payment
 - Interest Rate
 - Loan Term
@@ -55,10 +55,10 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 
 ### FAQ
 ***What is **Home Choice Pro**?***
-**Home Choice Pro** is a tool that helps potential homebuyers estimate not just their total cost, but other factors that will better prepare them. It takes into account various factors such as the monthly budget, down payment, interest rate, loan term, and HOA. By providing these details, users can get a better idea of what they might expect to pay all around. Unlike other mortgage calculators, **Home Choice Pro** starts with the user's monthly budget first. It takes that number and the other provided input, and provides the homebuyer with their personalized home affordability. They are also provided with loan total cost, principal, and interest.
+**Home Choice Pro** is a tool that helps potential homebuyers estimate not just their total cost, but other factors that will better prepare them. It takes into account various factors such as their desired monthly payment, down payment, interest rate, loan term, and HOA. By providing these details, users can get a better idea of what they might expect to pay all around. Unlike other mortgage calculators, **Home Choice Pro** starts with the user's desired monthly payment first. It takes that number and the other provided input, and provides the homebuyer with their personalized home affordability. They are also provided with loan total cost, principal, and interest.
 ***What information do I need to use the mortgage calculator?***
 To use a mortgage calculator effectively, you need to input several pieces of information:
-  - Monthly Budget: The amount you are willing to pay monthly.
+  - Desired Monthly Payment: The amount you are willing to pay monthly.
   - Down Payment: The initial up-front payment.
   - Interest rate: The rate at which interest will accrue on your loan.
   - Loan term: The length of time over which you will repay the loan, typically 15 or 30 years.
