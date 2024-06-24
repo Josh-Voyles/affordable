@@ -134,11 +134,26 @@ def test_hoa_edit(main_window, qtbot):
     qtbot.keyClicks(main_window.ui.HOAEdit, "12345")
     assert main_window.ui.HOAEdit.text() == "12345"
 
+
 def test_property_tax_edit(main_window, qtbot):
     assert main_window.ui.propertyTaxEdit.text() == "0"
     main_window.ui.propertyTaxEdit.clear()
     qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.74")
     assert main_window.ui.propertyTaxEdit.text() == "0.74"
+
+
+def test_insurance_edit(main_window, qtbot):
+    assert main_window.ui.insuranceEdit.text() == "0"
+    main_window.ui.propertyTaxEdit.clear()
+    qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.5")
+    assert main_window.ui.propertyTaxEdit.text() == "0.5"
+
+
+def test_PMI_edit(main_window, qtbot):
+    assert main_window.ui.PMIEdit.text() == "0"
+    main_window.ui.PMIEdit.clear()
+    qtbot.keyClicks(main_window.ui.PMIEdit, "0.34")
+    assert main_window.ui.PMIEdit.text() == "0.34"
 
 
 def test_calculate_house(main_window, qtbot):
@@ -157,6 +172,7 @@ def test_calculate_house(main_window, qtbot):
     assert main_window.ui.principalLabelNumber.text() == "$310907"
     assert main_window.ui.interestLabelNumber.text() == "$49093"
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 0%"
+
 
 def test_calculate_house_2(main_window, qtbot):
     # enter values in gui
@@ -180,6 +196,33 @@ def test_calculate_house_2(main_window, qtbot):
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 18%"
 
 
+def test_calculate_house_3(main_window, qtbot):
+    """Third calculation test adding PMI and insurance"""
+    # enter values in gui
+    main_window.ui.monthlyPaymentEdit.clear()
+    qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "2400")
+    main_window.ui.dpEdit.clear()
+    qtbot.keyClicks(main_window.ui.dpEdit, "50000")
+    main_window.ui.interestRateEdit.clear()
+    main_window.ui.HOAEdit.clear()
+    qtbot.keyClicks(main_window.ui.HOAEdit, "350")
+    qtbot.keyClicks(main_window.ui.interestRateEdit, "6.125")
+    qtbot.mouseClick(main_window.ui.termComboBox, QtCore.Qt.LeftButton)
+    qtbot.keyClicks(main_window.ui.termComboBox, "30")
+    main_window.ui.propertyTaxEdit.clear()
+    qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.74")
+    main_window.ui.PMIEdit.clear()
+    qtbot.keyClicks(main_window.ui.PMIEdit, "0.5")
+    main_window.ui.insuranceEdit.clear()
+    qtbot.keyClicks(main_window.ui.insuranceEdit, "0.34")
+    qtbot.mouseClick(main_window.ui.calcPushButton, QtCore.Qt.LeftButton)
+    assert main_window.ui.homeAffordabilityLabelNumber.text() == "$321210"
+    assert main_window.ui.totalCostLabelNumber.text() == "$593244"
+    assert main_window.ui.principalLabelNumber.text() == "$271210"
+    assert main_window.ui.interestLabelNumber.text() == "$322034"
+    assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 16%"
+
+
 def test_reset(main_window, qtbot):
     # test entering values
     main_window.ui.monthlyPaymentEdit.clear()
@@ -194,6 +237,10 @@ def test_reset(main_window, qtbot):
     qtbot.keyClicks(main_window.ui.termComboBox, "15")
     main_window.ui.propertyTaxEdit.clear()
     qtbot.keyClicks(main_window.ui.propertyTaxEdit, "0.74")
+    main_window.ui.PMIEdit.clear()
+    qtbot.keyClicks(main_window.ui.PMIEdit, "0.5")
+    main_window.ui.insuranceEdit.clear()
+    qtbot.keyClicks(main_window.ui.insuranceEdit, "0.34")
     # reset
     qtbot.mouseClick(main_window.ui.resetPushButton, QtCore.Qt.LeftButton)
     # validate cleared
@@ -203,6 +250,8 @@ def test_reset(main_window, qtbot):
     assert main_window.ui.termComboBox.currentText() == "30"
     assert main_window.ui.HOAEdit.text() == "0"
     assert main_window.ui.propertyTaxEdit.text() == "0"
+    assert main_window.ui.PMIEdit.text() == "0"
+    assert main_window.ui.insuranceEdit.text() == "0"
     assert main_window.ui.homeAffordabilityLabelNumber.text() == "$0"
     assert main_window.ui.totalCostLabelNumber.text() == "$0"
     assert main_window.ui.principalLabelNumber.text() == "$0"
