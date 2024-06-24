@@ -16,10 +16,9 @@ Calls MainWindow from auto-generated QT Designer Files
 
 import re
 import os
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from models.affordability_calculator import AffordabilityCalculator as af
 from views.main_window_ui import Ui_MainWindow
-from views.pop_up_error_window import ErrorWindow
 
 VALID_ENTRY = r"^[0-9]*\.?[0-9]+$"
 PATH_TO_GUIDE = os.path.join(os.path.dirname(__file__), "..", "docs", "user_guide.md")
@@ -39,7 +38,6 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
-        self.error = ErrorWindow()
 
         self.setWindowTitle("Home Choice Pro")
         self.guide = self.open_guide()
@@ -80,7 +78,7 @@ class MainWindow(QMainWindow):
             self.display_results()
 
         else:
-            self.display_error()
+            self.display_error("Only numeric characters allowed!")
 
     def load_calculations(self, calc):
         """Processes calculations from AffordabilityCalculator"""
@@ -122,9 +120,10 @@ class MainWindow(QMainWindow):
                 return False
         return True
 
-    def display_error(self):
+    def display_error(self, error_message="Error!"):
         """shows an error window to inform user that the input is invalid."""
-        self.error.show()
+        message = f"An error occurred: {error_message}"
+        QMessageBox.critical(self.ui.centralwidget, "Error!",  message)
 
     def open_guide(self):
         """returns user guide text or error for Github issue"""
