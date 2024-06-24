@@ -684,7 +684,7 @@ QPushButton:hover {
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
+                <y>-54</y>
                 <width>645</width>
                 <height>600</height>
                </rect>
@@ -1602,7 +1602,7 @@ QPushButton:hover {
                    <item>
                     <widget class="QLineEdit" name="PMIEdit">
                      <property name="enabled">
-                      <bool>false</bool>
+                      <bool>true</bool>
                      </property>
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1730,7 +1730,7 @@ QPushButton:hover {
                    <item>
                     <widget class="QLineEdit" name="insuranceEdit">
                      <property name="enabled">
-                      <bool>false</bool>
+                      <bool>true</bool>
                      </property>
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
