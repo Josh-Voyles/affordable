@@ -15,12 +15,14 @@ Calls MainWindow from auto-generated QT Designer Files
 """
 
 import re
+import os
 from PyQt5.QtWidgets import QMainWindow
 from models.affordability_calculator import AffordabilityCalculator as af
 from views.main_window_ui import Ui_MainWindow
 from views.pop_up_error_window import ErrorWindow
 
 VALID_ENTRY = r"^[0-9]*\.?[0-9]+$"
+PATH_TO_GUIDE = os.path.join(os.path.dirname(__file__), "..", "docs", "user_guide.md")
 
 
 class MainWindow(QMainWindow):
@@ -40,6 +42,8 @@ class MainWindow(QMainWindow):
         self.error = ErrorWindow()
 
         self.setWindowTitle("Home Choice Pro")
+        self.guide = self.open_guide()
+        self.ui.guideLabel.setText(self.guide)
 
         self.edit_boxes = [
             self.ui.monthlyPaymentEdit,
@@ -51,6 +55,8 @@ class MainWindow(QMainWindow):
 
         self.ui.calcPushButton.clicked.connect(self.calculate_house)
         self.ui.resetPushButton.clicked.connect(self.reset)
+        self.ui.calculatorButton.clicked.connect(self.display_calculator_page)
+        self.ui.guideButton.clicked.connect(self.display_user_guide)
 
     def calculate_house(self):
         """
@@ -115,3 +121,19 @@ class MainWindow(QMainWindow):
     def display_error(self):
         """shows an error window to inform user that the input is invalid."""
         self.error.show()
+
+    def open_guide(self):
+        """returns user guide text or error for Github issue"""
+        try:
+            with open(PATH_TO_GUIDE, "r") as file:
+                return file.read()
+        except FileNotFoundError:
+            return "File Not Found: Please open an issue -> https://github.com/Josh-Voyles/Home-Choice-Pro/issues"
+
+    def display_calculator_page(self):
+        """Set stacked widgeted index to show calculator"""
+        self.ui.stackedWidget.setCurrentIndex(0)
+
+    def display_user_guide(self):
+        """Set stacked widgeted index to show user guide"""
+        self.ui.stackedWidget.setCurrentIndex(3)

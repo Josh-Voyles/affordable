@@ -15,9 +15,14 @@ Main Window Test Cases Below
 """
 
 import pytest
+import os
 from PyQt5 import QtCore
 from views.main_window import MainWindow
 from views.pop_up_error_window import ErrorWindow
+
+PATH_TO_GUIDE = os.path.join(
+    os.path.dirname(__file__), "..", "..", "docs", "user_guide.md"
+)
 
 
 # main window
@@ -134,6 +139,7 @@ def test_hoa_edit(main_window, qtbot):
     qtbot.keyClicks(main_window.ui.HOAEdit, "12345")
     assert main_window.ui.HOAEdit.text() == "12345"
 
+
 def test_property_tax_edit(main_window, qtbot):
     assert main_window.ui.propertyTaxEdit.text() == "0"
     main_window.ui.propertyTaxEdit.clear()
@@ -142,6 +148,7 @@ def test_property_tax_edit(main_window, qtbot):
 
 
 def test_calculate_house(main_window, qtbot):
+    """Tests known values and validates the result"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
     qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "1300")
@@ -158,7 +165,9 @@ def test_calculate_house(main_window, qtbot):
     assert main_window.ui.interestLabelNumber.text() == "$49093"
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 0%"
 
+
 def test_calculate_house_2(main_window, qtbot):
+    """Tests known values and validates the result"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
     qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "2400")
@@ -181,6 +190,11 @@ def test_calculate_house_2(main_window, qtbot):
 
 
 def test_reset(main_window, qtbot):
+    """
+    Tests user's interaction with text edit boxes.
+    Simulates entering values in all boxes.
+    Resets all boxes to default including downpayment label
+    """
     # test entering values
     main_window.ui.monthlyPaymentEdit.clear()
     qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "12345")
@@ -210,8 +224,25 @@ def test_reset(main_window, qtbot):
     assert main_window.ui.downPaymentHeaderLabel.text() == "-"
 
 
+def test_open_file(main_window):
+    guide = main_window.ui.guideLabel.text()
+    with open(PATH_TO_GUIDE, "r") as file:
+        test_guide = file.read()
+    assert guide == test_guide
+
+
+def test_display_pages(main_window, qtbot):
+    """Tests user interaction with side panel navigaton buttons"""
+    assert main_window.ui.calculatorPage.isVisible()
+    qtbot.mouseClick(main_window.ui.guideButton, QtCore.Qt.LeftButton)
+    assert main_window.ui.guidePage.isVisible()
+    qtbot.mouseClick(main_window.ui.calculatorButton, QtCore.Qt.LeftButton)
+    assert main_window.ui.calculatorPage.isVisible()
+
+
 # this should be the last thing
 def test_quit(main_window, qtbot):
+    """Tests user's ability to quit the application"""
     assert main_window.isVisible()
     qtbot.mouseClick(main_window.ui.quitButton, QtCore.Qt.LeftButton)
     assert not main_window.isVisible()
