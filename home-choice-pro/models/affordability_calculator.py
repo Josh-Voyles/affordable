@@ -172,7 +172,7 @@ class AffordabilityCalculator:
     def _calculate_monthly_pmi_payment(self) -> float:
         """Helper function to factor PMI percentage into home affordability price."""
         loan_amount = self.calculate_loan_principal()
-        if loan_amount == 0:
+        if loan_amount == 0 or self.home_affordability_price == 0:
             return 0.0
         loan_to_value_ratio = loan_amount / self.home_affordability_price
         if loan_to_value_ratio <= 0.8:
