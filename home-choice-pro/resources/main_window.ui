@@ -1764,7 +1764,7 @@ QPushButton:hover {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>$/yr</string>
+                      <string>%/yr</string>
                      </property>
                     </widget>
                    </item>

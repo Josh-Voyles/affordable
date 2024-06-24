@@ -740,7 +740,7 @@ class Ui_MainWindow(object):
         self.PMIPercentLabel.setText(_translate("MainWindow", "%"))
         self.insuranceLabel.setText(_translate("MainWindow", "Insurance:"))
         self.insuranceEdit.setText(_translate("MainWindow", "0"))
-        self.insDollarYearLabel.setText(_translate("MainWindow", "$/yr"))
+        self.insDollarYearLabel.setText(_translate("MainWindow", "%/yr"))
         self.resetPushButton.setText(_translate("MainWindow", "Reset"))
         self.calcPushButton.setText(_translate("MainWindow", "Calculate"))
         self.guideLabel.setText(_translate("MainWindow", "Error"))
