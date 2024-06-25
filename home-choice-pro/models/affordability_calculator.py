@@ -15,6 +15,7 @@ Main logic class behind calculating house price based on monthly payment
 """
 
 import math
+import re
 
 
 class AffordabilityCalculator:
@@ -66,13 +67,12 @@ class AffordabilityCalculator:
         return True
 
     @staticmethod
-    def convert_string_number_into_float(number) -> float:
+    def convert_string_number_into_float(number: str) -> float:
         """Converts a string representing a number into a float (if possible)."""
         try:
-            parsed_number = float(number)
-            if parsed_number >= 0:
-                return parsed_number
-            return -1.0
+            cleaned_number = re.sub(r'[,$]', '', number)
+            parsed_number = float(cleaned_number)
+            return parsed_number if parsed_number >= 0 else -1.0
         except ValueError:
             return -1.0
 

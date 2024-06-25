@@ -20,7 +20,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from models.affordability_calculator import AffordabilityCalculator as af
 from views.main_window_ui import Ui_MainWindow
 
-VALID_ENTRY = r"^[0-9]*\.?[0-9]+$"
+VALID_ENTRY = r"^\$?[\d]{1,3}(?:,[\d]{3})*(?:\.[\d]+)?\$?$|^\$?\d*\.?\d+\$?$"
 PATH_TO_GUIDE = os.path.join(os.path.dirname(__file__), "..", "docs", "user_guide.md")
 
 
