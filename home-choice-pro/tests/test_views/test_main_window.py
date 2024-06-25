@@ -96,9 +96,6 @@ def test_verify_digits(main_window):
     main_window.ui.HOAEdit.setText("b")
     assert main_window.verify_digits() is False
 
-def test_comma_dollar_strip():
-    """ Tests the stripping of commas',' and dollar signs'$' """
-    
 
 # I had trouble closing the error box. Since it's small, I've ommited it.
 

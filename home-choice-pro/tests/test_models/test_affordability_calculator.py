@@ -89,3 +89,26 @@ def test_calculate_monthly_payment(calculator):
     calculator.calculate_home_affordability_price()
     result = calculator._calculate_monthly_mortgage_payment()
     assert isinstance(result, float)
+
+def test_comma_dollar_strip(calculator):
+    """Tests the stripping of commas and dollar signs."""
+    test_cases = {
+        "$100,000,000$": 100000000,
+        "100,000,000$": 100000000,
+        "$100,000,000": 100000000,
+        "100000000$": 100000000,
+        "$100000000": 100000000,
+        "100,000,000": 100000000,
+        "100000000": 100000000,
+        "100000000.50$": 100000000.50,
+        "$100000000.50": 100000000.50,
+        "$100,000,000.50$": 100000000.50,
+        "100,000,000.50$": 100000000.50,
+        "$.50": 0.50,
+        ".50$": 0.50,
+        "50": 50,
+        "50.00": 50,
+    }
+        
+    for input_str, expected_output in test_cases.items():
+        assert calculator.convert_string_number_into_float(input_str) == expected_output
