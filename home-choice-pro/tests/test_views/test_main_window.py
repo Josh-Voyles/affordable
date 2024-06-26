@@ -16,9 +16,8 @@ Main Window Test Cases Below
 
 import pytest
 import os
-from PyQt5.QtWidgets import QMessageBox, QApplication
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtCore
-from PyQt5.QtTest import QTest
 from views.main_window import MainWindow
 
 PATH_TO_GUIDE = os.path.join(
@@ -186,7 +185,7 @@ def test_calculate_house(main_window, mock_qmessagebox, qtbot):
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 0%"
 
 
-def test_calculate_house_2(main_window, qtbot):
+def test_calculate_house_2(main_window, mock_qmessagebox, qtbot):
     """Tests known values and validates the result"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
@@ -209,7 +208,7 @@ def test_calculate_house_2(main_window, qtbot):
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 18%"
 
 
-def test_calculate_house_3(main_window, qtbot):
+def test_calculate_house_3(main_window, mock_qmessagebox, qtbot):
     """Third calculation test adding PMI and insurance"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()

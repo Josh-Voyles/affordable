@@ -16,7 +16,7 @@ Calls MainWindow from auto-generated QT Designer Files
 
 import re
 import os
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QCheckBox
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from models.affordability_calculator import AffordabilityCalculator as af
 from views.main_window_ui import Ui_MainWindow
 
