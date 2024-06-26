@@ -16,7 +16,7 @@ Calls MainWindow from auto-generated QT Designer Files
 
 import re
 import os
-from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QCheckBox
 from models.affordability_calculator import AffordabilityCalculator as af
 from views.main_window_ui import Ui_MainWindow
 
@@ -42,6 +42,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Home Choice Pro")
         self.guide = self.open_guide()
         self.ui.guideLabel.setText(self.guide)
+        self.pmi_warned = False
 
         self.edit_boxes = [
             self.ui.monthlyPaymentEdit,
@@ -102,6 +103,9 @@ class MainWindow(QMainWindow):
             f"Down Payment: {str(self.downpayment)}%"
         )
 
+        if int(self.downpayment) < 20:
+            self.display_PMI_warning()
+
     def reset(self):
         """Resets all edit boxes to 0."""
         for edit in self.edit_boxes:
@@ -140,3 +144,9 @@ class MainWindow(QMainWindow):
     def display_user_guide(self):
         """Set stacked widgeted index to show user guide"""
         self.ui.stackedWidget.setCurrentIndex(3)
+
+    def display_PMI_warning(self):
+        if not self.pmi_warned:
+            message = "Private Mortage Insurance typically required with down payments less than 20 percent"
+            QMessageBox.warning(self, "PMI Error", message)
+        self.pmi_warned = True
