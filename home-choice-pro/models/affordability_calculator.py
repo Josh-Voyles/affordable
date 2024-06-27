@@ -32,21 +32,24 @@ class AffordabilityCalculator:
     pmi_percentage: float
 
     # Constructor
-    def __init__(self, monthly_payment: str = "0", down_payment: str = "0",
-                 interest_rate: str = "0", loan_term: str = "0", hoa_monthly_fee: str = "0",
-                 property_tax_percentage: str = "0", homeowners_insurance_percentage: str = "0",
-                 pmi_percentage: str = "0"):
+    def __init__(self, 
+                 monthly_payment: float = 0.0, 
+                 down_payment: float = 0.0, 
+                 interest_rate: float = 0.0, 
+                 loan_term: float = 0, 
+                 hoa_monthly_fee: float = 0.0, 
+                 property_tax_percentage: float = 0.0, 
+                 homeowners_insurance_percentage: float = 0.0, 
+                 pmi_percentage: float = 0.0):
         """Initializes class variables."""
-        self.monthly_payment = self.convert_string_number_into_float(monthly_payment)
-        self.down_payment = self.convert_string_number_into_float(down_payment)
-        self.interest_rate = self.convert_string_number_into_float(interest_rate)
-        self.loan_term = self.convert_string_number_into_float(loan_term)
-        self.hoa_monthly_fee = self.convert_string_number_into_float(hoa_monthly_fee)
-        self.property_tax_percentage = self.convert_string_number_into_float(
-            property_tax_percentage)
-        self.homeowners_insurance_percentage = self.convert_string_number_into_float(
-            homeowners_insurance_percentage)
-        self.pmi_percentage = self.convert_string_number_into_float(pmi_percentage)
+        self.monthly_payment = monthly_payment
+        self.down_payment = down_payment
+        self.interest_rate = interest_rate
+        self.loan_term = loan_term
+        self.hoa_monthly_fee = hoa_monthly_fee
+        self.property_tax_percentage = property_tax_percentage
+        self.homeowners_insurance_percentage = homeowners_insurance_percentage
+        self.pmi_percentage = pmi_percentage
 
     # Variable Checking Functions
     def _user_inputs_are_valid(self) -> bool:
@@ -65,15 +68,6 @@ class AffordabilityCalculator:
             return False
         return True
 
-    @staticmethod
-    def convert_string_number_into_float(number: str) -> float:
-        """Converts a string representing a number into a float (if possible)."""
-        try:
-            cleaned_number = number.replace(',', '').replace('$', '')
-            parsed_number = float(cleaned_number)
-            return parsed_number if parsed_number >= 0 else -1.0
-        except ValueError:
-            return -1.0
 
     # Calculation Functions
     def calculate_home_affordability_price(self) -> int:

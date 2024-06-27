@@ -65,14 +65,14 @@ class MainWindow(QMainWindow):
         """
         if self.verify_digits():
             calc = af(
-                self.ui.monthlyPaymentEdit.text(),
-                self.ui.dpEdit.text(),
-                self.ui.interestRateEdit.text(),
-                self.ui.termComboBox.currentText(),
-                self.ui.HOAEdit.text(),
-                self.ui.propertyTaxEdit.text(),
-                self.ui.insuranceEdit.text(),
-                self.ui.PMIEdit.text(),
+                self.convert_number_string_to_float(self.ui.monthlyPaymentEdit.text()),
+                self.convert_number_string_to_float(self.ui.dpEdit.text()),
+                self.convert_number_string_to_float(self.ui.interestRateEdit.text()),
+                self.convert_number_string_to_float(self.ui.termComboBox.currentText()),
+                self.convert_number_string_to_float(self.ui.HOAEdit.text()),
+                self.convert_number_string_to_float(self.ui.propertyTaxEdit.text()),
+                self.convert_number_string_to_float(self.ui.insuranceEdit.text()),
+                self.convert_number_string_to_float(self.ui.PMIEdit.text()),
             )
             self.load_calculations(calc)
             self.display_results()
@@ -140,3 +140,13 @@ class MainWindow(QMainWindow):
     def display_user_guide(self):
         """Set stacked widgeted index to show user guide"""
         self.ui.stackedWidget.setCurrentIndex(3)
+
+    @staticmethod
+    def convert_number_string_to_float(number: str) -> float:
+        """Converts a string representing a number into a float (if possible)."""
+        try:
+            cleaned_number = number.replace(',', '').replace('$', '')
+            parsed_number = float(cleaned_number)
+            return parsed_number if parsed_number >= 0 else -1.0
+        except ValueError:
+            return -1.0
