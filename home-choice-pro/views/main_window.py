@@ -86,7 +86,7 @@ class MainWindow(QMainWindow):
         self.total_loan_cost = calc.calculate_total_home_loan_price()
         self.total_principal = calc.calculate_loan_principal()
         self.total_interest = calc.calculate_loan_interest()
-        if not self.ui.dpEdit.text() == "0":
+        if self.ui.dpEdit.text() != "0":
             (float(self.ui.dpEdit.text()) / self.home_affordability * 100)
             self.downpayment = round(
                 float(self.ui.dpEdit.text()) / self.home_affordability * 100
