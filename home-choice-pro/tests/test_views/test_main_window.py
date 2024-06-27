@@ -16,6 +16,7 @@ Main Window Test Cases Below
 
 import pytest
 import os
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtCore
 from views.main_window import MainWindow
 
@@ -31,6 +32,21 @@ def main_window(qtbot):
     main_window.show()
     qtbot.addWidget(main_window)
     yield main_window
+
+
+@pytest.fixture
+def mock_qmessagebox(qtbot):
+    """This fixture sinks the QMessageBox to prevent the pop up"""
+
+    def mock_messagebox(*args, **kwargs):
+        msgbox = QMessageBox()
+        msgbox.setText("Mock Message Box")
+        msgbox.setStandardButtons(QMessageBox.Ok)
+        return msgbox
+
+    QMessageBox.warning = mock_messagebox
+    QMessageBox.information = mock_messagebox
+    QMessageBox.critical = mock_messagebox
 
 
 def test_main_window(main_window):
@@ -97,8 +113,6 @@ def test_verify_digits(main_window):
     assert main_window.verify_digits() is False
 
 
-# I had trouble closing the error box. Since it's small, I've ommited it.
-
 def test_monthly_payment_edit(main_window, qtbot):
     main_window.ui.monthlyPaymentEdit.clear()
     qtbot.keyClicks(main_window.ui.monthlyPaymentEdit, "12345")
@@ -152,7 +166,7 @@ def test_PMI_edit(main_window, qtbot):
     assert main_window.ui.PMIEdit.text() == "0.34"
 
 
-def test_calculate_house(main_window, qtbot):
+def test_calculate_house(main_window, mock_qmessagebox, qtbot):
     """Tests known values and validates the result"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
@@ -171,7 +185,7 @@ def test_calculate_house(main_window, qtbot):
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 0%"
 
 
-def test_calculate_house_2(main_window, qtbot):
+def test_calculate_house_2(main_window, mock_qmessagebox, qtbot):
     """Tests known values and validates the result"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
@@ -194,7 +208,7 @@ def test_calculate_house_2(main_window, qtbot):
     assert main_window.ui.downPaymentHeaderLabel.text() == "Down Payment: 18%"
 
 
-def test_calculate_house_3(main_window, qtbot):
+def test_calculate_house_3(main_window, mock_qmessagebox, qtbot):
     """Third calculation test adding PMI and insurance"""
     # enter values in gui
     main_window.ui.monthlyPaymentEdit.clear()
