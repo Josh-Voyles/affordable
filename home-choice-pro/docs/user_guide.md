@@ -38,6 +38,7 @@ Here are some basic commands to get you started:
 
 ### Input Guidelines
 To ensure smooth operation of **Home Choice Pro**, please adhere to the following input guidelines:
+
 **Allowed Inputs**
 - **Numeric Fields:** Only numeric values (0-9) are allowed. Decimal points may be used where applicable.
 
@@ -55,25 +56,46 @@ To ensure smooth operation of **Home Choice Pro**, please adhere to the followin
 
 ### FAQ
 ***What is **Home Choice Pro**?***
+
 **Home Choice Pro** is a tool that helps potential homebuyers estimate not just their total cost, but other factors that will better prepare them. It takes into account various factors such as their desired monthly payment, down payment, interest rate, loan term, and HOA. By providing these details, users can get a better idea of what they might expect to pay all around. Unlike other mortgage calculators, **Home Choice Pro** starts with the user's desired monthly payment first. It takes that number and the other provided input, and provides the homebuyer with their personalized home affordability. They are also provided with loan total cost, principal, and interest.
+
 ***What information do I need to use the mortgage calculator?***
+
 To use a mortgage calculator effectively, you need to input several pieces of information:
   - Desired Monthly Payment: The amount you are willing to pay monthly.
   - Down Payment: The initial up-front payment.
   - Interest rate: The rate at which interest will accrue on your loan.
   - Loan term: The length of time over which you will repay the loan, typically 15 or 30 years.
   - Property Tax Rate: The tax on a property.
+  
   ***Optional inputs might include:***
   - Expected HOA Fee: Homeowners association fee to maintain all properties, shared amenities, and common areas within the association.
   - Private Mortgage Insurance: A type of insurance for certain mortgages with high LTV ratios that protects the lender.
+
 ***How accurate are mortgage calculators?***
+
 Mortgage calculators provide a good estimate of monthly or total payment(s) but should be considered approximations. They often don't account for fluctuations in property taxes, insurance premiums, or changes in interest rates for adjustable-rate mortgages. Additionally, they don't include maintenance costs or utilities, which need to be considered for a complete understanding of housing expenses. Therefore, while mortgage calculators are excellent for initial planning and comparisons, the actual mortgage payment may vary slightly due to these variables and lender-specific requirements.
+
 ***What is Private Mortgage Insurance?***
+
 When a homebuyer takes out a home loan or refinances their mortgage, their lender may require to pay PMI. The national average ranges from 0.19% to 2.25%. The amount a homebuyer will pay is based on two factors: 
 - the total loan amount: PMI costs are usually higher for larger mortgages
 - the homebuyers credit score: Lenders usually charge those with higher credit scores lower PMI percentages
 Lenders may require it depending on the loan-to-value (LTV) ratio. If the homebuyer needs PMI, the lender will choose the provider of their choice. Typically, lenders will require homeowners to pay PMI while their LTV is above 80%. Once their LTV is below 80%, the homebuyer can request to stop paying PMI.
 
+***What is HOA?***
+
+HOA is an acronym for 'homeowners association'. It is a planned community that creates and enforces rules for the properties and residents. There are HOA fees and paying HOA fees are NOT optional if a homeowner purchases property within an HOAs jurisdiction. If a homeowner purchases a property within a HOAs jurisdiction, they are automatically required to pay the HOA fees. It is very important to understand the HOAs rules before purchase, as some are more restrictive than others. For example, the HOA can forbid its residents from making changes to their property, such as adding solar panels and leaving chalk art on the driveway over night. The HOA is made of residents within the community. The fees depend on the following factors:
+  - Location
+  - Number of properties in the community
+  - Amenities
+  - Type of property
+
+On average, HOA fees range from $$600$ - $1,500 per year. The HOA could be higher if the property is located in an expensive area. HOA fees are used to maintain common areas, renovation projects and emergencies.
+
+***What are property taxes?***
+
+Property taxes are annual or semi-annual charges by the government that are paid by owners of real estate within its jurisdiction. These taxes fund schools, police, fire departments, libraries, and other local services that help benefit the community. Property taxes range from 0.31% to 1.64%.
 ### License
 
 ### Acknowledgements
