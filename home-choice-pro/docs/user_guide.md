@@ -158,26 +158,12 @@ As an owner of real estate within a government jurisdiction, you're required to 
 The amount of property tax varies depending on the location, with rates ranging from 0.31% to 1.64%. For example, if you own a $200,000 home in an area with a 0.5% property tax rate, your annual taxes would be $1,000.
 
 
-### License
+### Additional Considerations
 
-
-The GNU General Public License (GPL) version 3.0 is an open-source software licensing agreement that allows users to freely use, modify, and distribute software.
-
-**Key Points:**
-
-1. **Free Redistribution**: You can copy, modify, and redistribute the licensed software as you see fit.
-2. **Source Code Availability**: The source code of the software must be made available under the same license terms.
-3. **Modification Freedom**: You're allowed to make changes to the original software, but any modifications must also be distributed under the GPL 3.0 license.
-4. **No Discrimination Against Persons or Groups**: The license doesn't discriminate against individuals or groups based on their nationality, race, gender, etc.
-5. **No Restrictions on Other Software**: You're free to use and distribute other software alongside the licensed software.
-
-
-### Acknowledgements
-We would like to thank the following individuals and organizations for their support:
-- **Jose (Joey) Garcia**
-- **Randy Shreeves**
-- **Josh Voyles**
-- **Zaria Gibbs**
+* **Further Expenses**: Our calculator doesn't account for additional costs associated with home ownership, such as appraisal fees, title search fees, and maintenance costs.
+* **Accuracy**: The accuracy of results depends on the accuracy of information provided. Ensure all inputs are correct and up to date for accurate estimates.
+* **Financial Decisions**: Any financial decisions should not be based solely on calculator results. We strongly advise seeking professional financial advice tailored to your personal circumstances before making any mortgage-related decisions.
+* **Responsibility**: By using this calculator, you acknowledge that the application developers and affiliates are not responsible for inaccuracies or conclusions derived from its use. You assume full responsibility for any risks associated with the tool's use.
 
 
 ### Disclaimer  
@@ -187,13 +173,21 @@ We would like to thank the following individuals and organizations for their sup
 * **Interest Rates**: Interest rates used in calculations are for illustrative purposes only and may not reflect current market rates or individual profiles.
 
 
-#### **Additional Considerations**
+### Acknowledgements
 
-* Our calculator doesn't account for additional costs associated with home ownership, such as appraisal fees, title search fees, and maintenance costs.
-* The accuracy of results depends on the accuracy of information provided. Ensure all inputs are correct and up to date for accurate estimates.
+We would like to thank the following individuals for their contributions:
+* **Jose (Joey) Garcia**
+* **Zaria Gibbs**
+* **Randy Shreeves**
+* **Josh Voyles**
 
-**Financial Decisions**: Any financial decisions should not be based solely on calculator results. We strongly advise seeking professional financial advice tailored to your personal circumstances before making any mortgage-related decisions.
 
-By using this calculator, you acknowledge that the application developers and affiliates are not responsible for inaccuracies or conclusions derived from its use. You assume full responsibility for any risks associated with the tool's use.
+### License
 
-If you have questions or require further assistance, please contact a qualified mortgage advisor or financial professional.
+The GNU General Public License (GPL) version 3.0 is an open-source software licensing agreement that allows users to freely use, modify, and distribute software. Licensing key points:
+
+* **Free Redistribution**: You can copy, modify, and redistribute the licensed software as you see fit.
+* **Source Code Availability**: The source code of the software must be made available under the same license terms.
+* **Modification Freedom**: You're allowed to make changes to the original software, but any modifications must also be distributed under the GPL 3.0 license.
+* **No Discrimination Against Persons or Groups**: The license doesn't discriminate against individuals or groups based on their nationality, race, gender, etc.
+* **No Restrictions on Other Software**: You're free to use and distribute other software alongside the licensed software.
