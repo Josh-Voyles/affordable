@@ -47,6 +47,51 @@ The program is a Python based application that uses the PyQt framework making th
 - Private Mortgage Insurance (PMI) 
 - Expected HOA fee 
 
+## Guide
+
+Step 1:
+
+When you open the application, the calculator defaults to the 'Calculate' tabs allowing estimation of your home affordability.
+
+![Calculate](images/hcp1.png)
+
+
+Step 2:
+
+Enter your desired monthly payment. This should be the maximum amount you can afford per month in housing expenses. In general, it should be no more than 28 percent of your total income.
+
+![Budget](images/hcp2.png)
+
+Step 3:
+
+Enter estimated mortgage details.
+
+![Details](images/hcp3.png)
+
+Step 4:
+
+Calculate your maximum budget for a house. Down payment percentage and loan details are displayed too.
+
+![Process](images/hcp4.png)
+
+Step 5:
+
+Reset all details if you need to start over.
+
+![Reset](images/hcp5.png)
+
+Step 6:
+
+View this user guide in the application if you need further assistance.
+
+![Guide](images/hcp6.png)
+
+Step 7:
+
+Quit the application when you're finished.
+
+![Quit](images/hcp7.png)
+
 
 ## FAQ
 
