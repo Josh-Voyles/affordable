@@ -157,6 +157,8 @@ As an owner of real estate within a government jurisdiction, you're required to 
 
 The amount of property tax varies depending on the location, with rates ranging from 0.31% to 1.64%. For example, if you own a $200,000 home in an area with a 0.5% property tax rate, your annual taxes would be $1,000.
 
+See [Property Taxes](https://www.tax-rates.org/taxtables/property-tax-by-state) for the specific tax rate for your state.
+
 
 ### Additional Considerations
 
