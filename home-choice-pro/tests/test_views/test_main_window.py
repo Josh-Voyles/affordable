@@ -96,11 +96,11 @@ def test_verify_digits(main_window):
     main_window.ui.monthlyPaymentEdit.setText("")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText("1")
-    assert main_window.verify_digits() is False
+    assert main_window.verify_digits() is True
     main_window.ui.monthlyPaymentEdit.setText("1")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText(" ")
-    assert main_window.verify_digits() is False
+    assert main_window.verify_digits() is True
     main_window.ui.monthlyPaymentEdit.setText("1")
     main_window.ui.dpEdit.setText("1")
     main_window.ui.interestRateEdit.setText("1")

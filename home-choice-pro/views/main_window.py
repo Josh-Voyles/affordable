@@ -93,8 +93,8 @@ class MainWindow(QMainWindow):
         for edit in self.edit_boxes:
             try:
                 self.parameters.append(
-                    float(edit.text().replace(",", "").replace("$", ""))
-                    if edit.text() != ""
+                    float(edit.text().replace(",", "").replace("$", "").strip())
+                    if edit.text().strip() != ""
                     else 0.00
                 )
             except ValueError:
