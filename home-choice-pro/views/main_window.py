@@ -93,7 +93,9 @@ class MainWindow(QMainWindow):
         for edit in self.edit_boxes:
             try:
                 self.parameters.append(
-                    float(edit.text().replace(",", "").replace("$", "") ) if edit.text() != "" else 0.00 
+                    float(edit.text().replace(",", "").replace("$", ""))
+                    if edit.text() != ""
+                    else 0.00
                 )
             except ValueError:
                 return False
@@ -106,11 +108,16 @@ class MainWindow(QMainWindow):
         self.total_loan_cost = calc.get_total_loan_cost()
         self.total_principal = calc.get_total_loan_principal()
         self.total_interest = calc.get_total_loan_interest()
-        if self.ui.dpEdit.text() != "0" and self.ui.dpEdit.text() != "":
-            (float(self.ui.dpEdit.text()) / self.home_affordability * 100)
+        if (
+            self.ui.dpEdit.text() != "0"
+            and self.ui.dpEdit.text() != ""
+            and self.home_affordability > 0
+        ):
             self.display_dp = round(
                 float(self.ui.dpEdit.text()) / self.home_affordability * 100
             )
+        else:
+            self.display_dp = 0
 
     def display_results(self):
         """Display calculations in application header"""
@@ -156,7 +163,7 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(3)
 
     def display_PMI_warning(self):
-        #assumes PMI is the last parameter, should write a test for correct order
+        # assumes PMI is the last parameter, should write a test for correct order
         if self.not_pmi_warned and self.parameters[-1] <= 0:
             print(self.parameters[-1])
             message = "Private Mortage Insurance typically required with down payments less than 20 percent"
