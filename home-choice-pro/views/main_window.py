@@ -45,15 +45,6 @@ class MainWindow(QMainWindow):
         self.total_interest: int = 0
         self.display_dp: int = 0
 
-        # variables to load to calc
-        self.monthly_payment: float = 0.00
-        self.down_payment: float = 0.00
-        self.interest_rate: float = 0.00
-        self.home_owners: float = 0.00
-        self.property_tax: float = 0.00
-        self.insurance: float = 0.00
-        self.private_insurance: float = 0.00
-
         # list of float to pass to aff calc
         self.parameters = []
 
