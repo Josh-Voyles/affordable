@@ -17,21 +17,14 @@ Calls MainWindow from auto-generated QT Designer Files
 import re
 import os
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
-from models.affordability_calculator import AffordabilityCalculator as af
+from models.affordability_calculator import AffordabilityCalculator as af_calc
 from views.main_window_ui import Ui_MainWindow
 
-VALID_ENTRY = r"^[0-9]*\.?[0-9]+$"
 PATH_TO_GUIDE = os.path.join(os.path.dirname(__file__), "..", "docs", "user_guide.md")
 
 
 class MainWindow(QMainWindow):
     """Builds main UI from auto-generated main_window_ui."""
-
-    home_affordability: int
-    total_loan_cost: int
-    total_principal: int
-    total_interest: int
-    downpayment: int = 0
 
     def __init__(self):
         super().__init__()
@@ -39,11 +32,32 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
 
+        # additional ui tweaks
         self.setWindowTitle("Home Choice Pro")
         self.guide = self.open_guide()
         self.ui.guideLabel.setText(self.guide)
-        self.pmi_warned = False
+        self.not_pmi_warned = True
 
+        # variables to display to user
+        self.home_affordability: int = 0
+        self.total_loan_cost: int = 0
+        self.total_principal: int = 0
+        self.total_interest: int = 0
+        self.display_dp: int = 0
+
+        # variables to load to calc
+        self.monthly_payment: float = 0.00
+        self.down_payment: float = 0.00
+        self.interest_rate: float = 0.00
+        self.home_owners: float = 0.00
+        self.property_tax: float = 0.00
+        self.insurance: float = 0.00
+        self.private_insurance: float = 0.00
+
+        # list of float to pass to aff calc
+        self.parameters = []
+
+        # ui edit boxes
         self.edit_boxes = [
             self.ui.monthlyPaymentEdit,
             self.ui.dpEdit,
@@ -65,31 +79,36 @@ class MainWindow(QMainWindow):
         Invalid -> error message displays.
         """
         if self.verify_digits():
-            calc = af(
-                self.ui.monthlyPaymentEdit.text(),
-                self.ui.dpEdit.text(),
-                self.ui.interestRateEdit.text(),
-                self.ui.termComboBox.currentText(),
-                self.ui.HOAEdit.text(),
-                self.ui.propertyTaxEdit.text(),
-                self.ui.insuranceEdit.text(),
-                self.ui.PMIEdit.text(),
-            )
+            calc = af_calc()
+            calc.process_affordability(*self.parameters)
             self.load_calculations(calc)
             self.display_results()
 
         else:
             self.display_error("Only numeric characters allowed!")
 
+    def verify_digits(self):
+        """Checks edit boxes -> digits are decimal and not empty."""
+        self.parameters.clear()
+        for edit in self.edit_boxes:
+            try:
+                self.parameters.append(
+                    float(edit.text().replace(",", "").replace("$", "") ) if edit.text() != "" else 0.00 
+                )
+            except ValueError:
+                return False
+        self.parameters.insert(3, float(self.ui.termComboBox.currentText()))
+        return True
+
     def load_calculations(self, calc):
         """Processes calculations from AffordabilityCalculator"""
-        self.home_affordability = calc.calculate_home_affordability_price()
-        self.total_loan_cost = calc.calculate_total_home_loan_price()
-        self.total_principal = calc.calculate_loan_principal()
-        self.total_interest = calc.calculate_loan_interest()
-        if self.ui.dpEdit.text() != "0":
+        self.home_affordability = calc.get_max_home_price()
+        self.total_loan_cost = calc.get_total_loan_cost()
+        self.total_principal = calc.get_total_loan_principal()
+        self.total_interest = calc.get_total_loan_interest()
+        if self.ui.dpEdit.text() != "0" and self.ui.dpEdit.text() != "":
             (float(self.ui.dpEdit.text()) / self.home_affordability * 100)
-            self.downpayment = round(
+            self.display_dp = round(
                 float(self.ui.dpEdit.text()) / self.home_affordability * 100
             )
 
@@ -99,11 +118,9 @@ class MainWindow(QMainWindow):
         self.ui.totalCostLabelNumber.setText("$" + str(self.total_loan_cost))
         self.ui.principalLabelNumber.setText("$" + str(self.total_principal))
         self.ui.interestLabelNumber.setText("$" + str(self.total_interest))
-        self.ui.downPaymentHeaderLabel.setText(
-            f"Down Payment: {str(self.downpayment)}%"
-        )
+        self.ui.downPaymentHeaderLabel.setText(f"Down Payment: {str(self.display_dp)}%")
 
-        if int(self.downpayment) < 20:
+        if int(self.display_dp) < 20:
             self.display_PMI_warning()
 
     def reset(self):
@@ -117,17 +134,10 @@ class MainWindow(QMainWindow):
         self.ui.interestLabelNumber.setText("$0")
         self.ui.downPaymentHeaderLabel.setText("-")
 
-    def verify_digits(self):
-        """Checks edit boxes -> digits are decimal and not empty."""
-        for edit in self.edit_boxes:
-            if not re.match(VALID_ENTRY, edit.text()):
-                return False
-        return True
-
     def display_error(self, error_message="Error!"):
         """shows an error window to inform user that the input is invalid."""
         message = f"An error occurred: {error_message}"
-        QMessageBox.critical(self.ui.centralwidget, "Error!",  message)
+        QMessageBox.critical(self.ui.centralwidget, "Error!", message)
 
     def open_guide(self):
         """returns user guide text or error for Github issue"""
@@ -146,7 +156,9 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(3)
 
     def display_PMI_warning(self):
-        if not self.pmi_warned:
+        #assumes PMI is the last parameter, should write a test for correct order
+        if self.not_pmi_warned and self.parameters[-1] <= 0:
+            print(self.parameters[-1])
             message = "Private Mortage Insurance typically required with down payments less than 20 percent"
             QMessageBox.warning(self, "PMI Error", message)
-        self.pmi_warned = True
+            self.not_pmi_warned = False
