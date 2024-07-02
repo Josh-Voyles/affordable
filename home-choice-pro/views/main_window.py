@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Home Choice Pro")
         self.guide = self.open_guide()
         self.ui.guideLabel.setText(self.guide)
-        self.not_pmi_warned = True
+        self.is_pmi_warned = False
 
         # variables to display to user
         self.home_affordability: int = 0
@@ -155,8 +155,8 @@ class MainWindow(QMainWindow):
 
     def display_PMI_warning(self):
         # assumes PMI is the last parameter, should write a test for correct order
-        if self.not_pmi_warned and self.parameters[-1] <= 0:
+        if not self.is_pmi_warned and self.parameters[-1] <= 0:
             print(self.parameters[-1])
             message = "Private Mortage Insurance typically required with down payments less than 20 percent"
             QMessageBox.warning(self, "PMI Error", message)
-            self.not_pmi_warned = False
+            self.is_pmi_warned = True
