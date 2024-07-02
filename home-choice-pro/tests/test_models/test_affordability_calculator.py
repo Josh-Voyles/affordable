@@ -4,79 +4,32 @@ from models.affordability_calculator import AffordabilityCalculator
 
 @pytest.fixture
 def calculator():
-    return AffordabilityCalculator("1500.0", "20000.0", "5", "30")
+    return AffordabilityCalculator()
 
 @pytest.fixture
 def zero_interest_calculator():
-    return AffordabilityCalculator("1500.0", "20000.0", "0", "30")
-
-
-def test_user_inputs_are_valid(calculator):
-    assert calculator._user_inputs_are_valid() == True
-
-    calculator.monthly_payment = -1.0
-    assert calculator._user_inputs_are_valid() == False
-
-
-def test_convert_string_number_into_float():
-    assert AffordabilityCalculator.convert_string_number_into_float("1000") == 1000.0
-    assert AffordabilityCalculator.convert_string_number_into_float("-1000") == -1.0
-    assert AffordabilityCalculator.convert_string_number_into_float("abc") == -1.0
-
+    return AffordabilityCalculator()
 
 def test_calculate_home_affordability_price(calculator):
-    result = calculator.calculate_home_affordability_price()
-    assert result != "Invalid User Inputs"
-    assert calculator.calculate_home_affordability_price() == "299422"
-
+    calculator.process_affordability(1500.0, 20000.0, 5, 30, 50, 1.5, 0.75, 0.85)
+    assert calculator.get_max_home_price() == 197638
+    assert calculator.get_total_loan_cost() == 343296
+    assert calculator.get_total_loan_principal() == 177638
+    assert calculator.get_total_loan_interest() == 165658
 
 def test_calculate_home_affordability_price_with_zero_interest(zero_interest_calculator):
-    result = zero_interest_calculator.calculate_home_affordability_price()
-    assert result != "Invalid User Inputs"
-    assert result == "560000"
-
-
-def test_calculate_total_home_loan_price(calculator):
-    calculator.calculate_home_affordability_price()
-    result = calculator.calculate_total_home_loan_price()
-    assert result != "Invalid Calculation From _calculate_monthly_payment() Function"
-    assert calculator.calculate_total_home_loan_price() == "539999"
-
-
-def test_calculate_loan_principal(calculator):
-    calculator.calculate_home_affordability_price()
-    result = calculator.calculate_loan_principal()
-    assert calculator.calculate_loan_principal() == "279422"
-
-
-def test_calculate_loan_interest(calculator):
-    calculator.calculate_home_affordability_price()
-    result = calculator.calculate_loan_interest()
-    assert calculator.calculate_loan_interest() == "260577"
-
+    zero_interest_calculator.process_affordability(1500.0, 20000.0, 0, 30, 50, 1.5, 0.75, 0.85)
+    assert zero_interest_calculator.get_max_home_price() == 283471
 
 def test_calculate_numerator(calculator):
-    calculator.interest_rate = 3.5
-    calculator.loan_term = 30.0
-    result = calculator._calculate_numerator()
-    assert isinstance(result, float)
-
+    interest_rate = 6.125 / 100 / 12
+    loan_term = 30 * 12
+    result = calculator._calculate_numerator(interest_rate, loan_term)
+    assert f"{result:.2f}" == "0.03"
 
 def test_calculate_denominator(calculator):
-    calculator.interest_rate = 0.035
-    calculator.loan_term = 30
-    result = calculator._calculate_denominator()
-    assert isinstance(result, float)
+    interest_rate = 6.125 / 100 / 12
+    loan_term = 30 * 12
+    result = calculator._calculate_denominator(interest_rate, loan_term)
+    assert f"{result:.2f}" == "5.25"
 
-
-def test_calculate_loan_affordability(calculator):
-    numerator = 0.035 * (1 + 0.035) ** 30
-    denominator = (1 + 0.035) ** 30 - 1
-    result = calculator._calculate_loan_affordability(numerator, denominator)
-    assert isinstance(result, float)
-
-
-def test_calculate_monthly_payment(calculator):
-    calculator.calculate_home_affordability_price()
-    result = calculator._calculate_monthly_payment()
-    assert isinstance(result, float)
