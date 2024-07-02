@@ -409,7 +409,7 @@ QPushButton:hover {
               <item>
                <widget class="QLabel" name="homeAffordabilityLabel">
                 <property name="text">
-                 <string>Home Affordability:</string>
+                 <string>Your Max House Price:</string>
                 </property>
                </widget>
               </item>
@@ -458,7 +458,7 @@ QPushButton:hover {
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>100</width>
+                <width>80</width>
                 <height>20</height>
                </size>
               </property>
@@ -521,7 +521,7 @@ QPushButton:hover {
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>120</width>
+                <width>100</width>
                 <height>20</height>
                </size>
               </property>
@@ -684,7 +684,7 @@ QPushButton:hover {
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-54</y>
+                <y>0</y>
                 <width>645</width>
                 <height>600</height>
                </rect>
@@ -765,7 +765,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -775,7 +775,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="monthlyPaymentLabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -786,7 +786,7 @@ QPushButton:hover {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Monthly Budget:</string>
+                      <string>Desired Monthly Payment:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -832,11 +832,35 @@ QPushButton:hover {
                        <height>16777215</height>
                       </size>
                      </property>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
                      <property name="text">
-                      <string>0</string>
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>32767</number>
+                     </property>
+                     <property name="frame">
+                      <bool>true</bool>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Normal</enum>
+                     </property>
+                     <property name="cursorPosition">
+                      <number>0</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>3000</string>
+                     </property>
+                     <property name="cursorMoveStyle">
+                      <enum>Qt::LogicalMoveStyle</enum>
+                     </property>
+                     <property name="clearButtonEnabled">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -905,7 +929,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -915,7 +939,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="downPaymentLabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -966,11 +990,20 @@ QPushButton:hover {
                        <height>16777215</height>
                       </size>
                      </property>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
                      <property name="text">
-                      <string>0</string>
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>32767</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>80000</string>
                      </property>
                     </widget>
                    </item>
@@ -1030,7 +1063,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -1040,7 +1073,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="interestRateLabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -1094,17 +1127,26 @@ QPushButton:hover {
                      <property name="layoutDirection">
                       <enum>Qt::LeftToRight</enum>
                      </property>
-                     <property name="text">
-                      <string>0</string>
+                     <property name="inputMask">
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>32767</number>
                      </property>
                      <property name="frame">
                       <bool>true</bool>
                      </property>
                      <property name="cursorPosition">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>6.125</string>
+                     </property>
+                     <property name="cursorMoveStyle">
+                      <enum>Qt::LogicalMoveStyle</enum>
                      </property>
                     </widget>
                    </item>
@@ -1161,7 +1203,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -1180,7 +1222,7 @@ QPushButton:hover {
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -1299,7 +1341,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -1309,7 +1351,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="HOALabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -1367,10 +1409,16 @@ QPushButton:hover {
                       </size>
                      </property>
                      <property name="text">
-                      <string>0</string>
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>9</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>350</string>
                      </property>
                     </widget>
                    </item>
@@ -1427,7 +1475,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -1437,7 +1485,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="propertyTaxLabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -1495,10 +1543,16 @@ QPushButton:hover {
                       </size>
                      </property>
                      <property name="text">
-                      <string>0</string>
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>6</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.74</string>
                      </property>
                     </widget>
                    </item>
@@ -1555,7 +1609,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -1565,7 +1619,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="PMILabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -1573,7 +1627,7 @@ QPushButton:hover {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>PMI:</string>
+                      <string>Private Mortgage Insurance:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1623,10 +1677,16 @@ QPushButton:hover {
                       </size>
                      </property>
                      <property name="text">
-                      <string>0</string>
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>6</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>1.01</string>
                      </property>
                     </widget>
                    </item>
@@ -1683,7 +1743,7 @@ QPushButton:hover {
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
+                       <width>30</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -1693,7 +1753,7 @@ QPushButton:hover {
                     <widget class="QLabel" name="insuranceLabel">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>225</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -1701,7 +1761,7 @@ QPushButton:hover {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Insurance:</string>
+                      <string>Homeowner's Insurance</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1751,10 +1811,19 @@ QPushButton:hover {
                       </size>
                      </property>
                      <property name="text">
-                      <string>0</string>
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>6</number>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.74</string>
+                     </property>
+                     <property name="cursorMoveStyle">
+                      <enum>Qt::LogicalMoveStyle</enum>
                      </property>
                     </widget>
                    </item>
@@ -2035,8 +2104,8 @@ QPushButton:pressed {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>660</width>
-                <height>546</height>
+                <width>83</width>
+                <height>53</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
