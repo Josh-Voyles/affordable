@@ -189,8 +189,6 @@ class AffordabilityCalculator:
         if loan_amount == 0 or max_home_price == 0:
             return 0.0
         loan_to_value_ratio = loan_amount / max_home_price
-        if loan_to_value_ratio <= 0.8:
-            return 0.0
         annual_premium = loan_amount * pmi
         monthly_premium = annual_premium / 12
         return monthly_premium
