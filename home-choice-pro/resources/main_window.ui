@@ -521,7 +521,7 @@ QPushButton:hover {
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>100</width>
+                <width>25</width>
                 <height>20</height>
                </size>
               </property>
@@ -543,6 +543,12 @@ QPushButton:hover {
               </property>
               <item>
                <widget class="QLabel" name="downPaymentHeaderLabel">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">font: 0 italic 11pt &quot;Ubuntu Sans&quot;;</string>
                 </property>
