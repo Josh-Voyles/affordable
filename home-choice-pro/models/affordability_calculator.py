@@ -188,7 +188,6 @@ class AffordabilityCalculator:
         loan_amount = self._calculate_total_loan_principal(max_home_price, down_payment)
         if loan_amount == 0 or max_home_price == 0:
             return 0.0
-        loan_to_value_ratio = loan_amount / max_home_price
         annual_premium = loan_amount * pmi
         monthly_premium = annual_premium / 12
         return monthly_premium
