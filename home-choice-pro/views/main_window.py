@@ -15,7 +15,7 @@ Calls MainWindow from auto-generated QT Designer Files
 """
 
 import re
-import os
+import os, sys
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtCore import QRegExp
@@ -25,12 +25,12 @@ from views.main_window_ui import Ui_MainWindow
 PATH_TO_GUIDE = os.path.join(os.path.dirname(__file__), "..", "docs", "user_guide.md")
 
 DEFAULT_MONTLY = 3000
-DEFAULT_DOWN_PAYMENT = 80000
+DEFAULT_DOWN_PAYMENT = 85000
 DEFAULT_INTEREST_RATE = 6.125
 DEFAULT_HOA = 350
 DEFAULT_PROPERTY_TAX = 0.74
 DEFAULT_HOME_INSURANCE = 0.74
-DEFAULT_PMI = 1.01
+DEFAULT_PMI = 0.00
 RECCOMENDED_DP_PERCENTAGE = 20
 
 CALCULATOR_WINDOW = 0
@@ -159,13 +159,20 @@ class MainWindow(QMainWindow):
         self.ui.interestLabelNumber.setText("$0")
         self.ui.downPaymentHeaderLabel.setText("-")
 
-    def open_guide(self) -> None:
+
+    def open_guide(self):
         """returns user guide text or error for Github issue"""
+        path = "docs/user_guide.md"
         try:
-            with open(PATH_TO_GUIDE, "r") as file:
+            if getattr(sys, 'frozen', False):
+                resolved_path = os.path.abspath(os.path.join(sys._MEIPASS, path))
+            else:
+                resolved_path = os.path.abspath(os.path.join(os.getcwd(), path))
+            with open(resolved_path, "r") as file:
                 return file.read()
         except FileNotFoundError:
             return "File Not Found: Please open an issue -> https://github.com/Josh-Voyles/Home-Choice-Pro/issues"
+
 
     def display_calculator_page(self) -> None:
         """Set stacked widgeted index to show calculator"""
@@ -178,7 +185,6 @@ class MainWindow(QMainWindow):
     def display_PMI_warning(self) -> None:
         # assumes PMI is the last parameter, should write a test for correct order
         if not self.is_pmi_warned and self.parameters[-1] <= 0:
-            print(self.parameters[-1])
             message = "Private Mortage Insurance typically required with down payments less than 20 percent"
             QMessageBox.warning(self, "PMI Error", message)
             self.is_pmi_warned = True

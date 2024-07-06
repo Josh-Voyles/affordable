@@ -388,11 +388,11 @@ QPushButton:hover {
                <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::MinimumExpanding</enum>
+               <enum>QSizePolicy::Fixed</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>0</width>
+                <width>60</width>
                 <height>20</height>
                </size>
               </property>
@@ -454,7 +454,7 @@ QPushButton:hover {
                <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
+               <enum>QSizePolicy::Fixed</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -517,11 +517,11 @@ QPushButton:hover {
                <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
+               <enum>QSizePolicy::Fixed</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>100</width>
+                <width>25</width>
                 <height>20</height>
                </size>
               </property>
@@ -543,6 +543,12 @@ QPushButton:hover {
               </property>
               <item>
                <widget class="QLabel" name="downPaymentHeaderLabel">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">font: 0 italic 11pt &quot;Ubuntu Sans&quot;;</string>
                 </property>
@@ -685,7 +691,7 @@ QPushButton:hover {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>645</width>
+                <width>646</width>
                 <height>600</height>
                </rect>
               </property>
@@ -1003,7 +1009,7 @@ QPushButton:hover {
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                      </property>
                      <property name="placeholderText">
-                      <string>80000</string>
+                      <string>85000</string>
                      </property>
                     </widget>
                    </item>
@@ -1686,7 +1692,7 @@ QPushButton:hover {
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                      </property>
                      <property name="placeholderText">
-                      <string>1.01</string>
+                      <string>0.00</string>
                      </property>
                     </widget>
                    </item>
@@ -2104,8 +2110,8 @@ QPushButton:pressed {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>83</width>
-                <height>53</height>
+                <width>84</width>
+                <height>52</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
